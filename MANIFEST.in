@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include kdlb *.css
+recursive-include kdlb *.csv
+recursive-include kdlb *.html
+recursive-include kdlb *.ico
+recursive-include kdlb *.js
+recursive-include kdlb *.json
+recursive-include kdlb *.md
+recursive-include kdlb *.png
+recursive-include kdlb *.py
+recursive-include kdlb *.svg
+recursive-include kdlb *.txt
+recursive-exclude kdlb *.pyc
