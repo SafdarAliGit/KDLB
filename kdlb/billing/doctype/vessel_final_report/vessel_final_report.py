@@ -2,7 +2,7 @@
 # For license information, please see license.txt
 
 import frappe
-# import frappe
+from frappe import _
 from frappe.model.document import Document
 from kdlb.billing.doctype.utils.get_cargo_rate import get_cargo_rate
 from kdlb.billing.doctype.utils.get_cost_center_and_income_account import get_cost_center_and_income_account
@@ -53,8 +53,8 @@ def submit_agent_invoice(source_name):
         si.submit()
         # return si
     except Exception as error:
-        frappe.msgprint(msg="Some error occured !", title='Error',
-                        raise_exception=error)
+        frappe.throw(_("{0}").format(error))
+
 # ------------------FOR STEVEDORE--------------------
 @frappe.whitelist()
 def submit_stevedore_invoice(source_name):
@@ -95,8 +95,7 @@ def submit_stevedore_invoice(source_name):
         si.submit()
         # return si
     except Exception as error:
-        frappe.msgprint(msg="Some error occured !", title='Error',
-                        raise_exception=error)
+        frappe.throw(_("{0}").format(error))
 
 # ------------------FOR KPT--------------------
 @frappe.whitelist()
@@ -138,8 +137,7 @@ def submit_kpt_invoice(source_name):
         si.submit()
         # return si
     except Exception as error:
-        frappe.msgprint(msg="Some error occured !", title='Error',
-                        raise_exception=error)
+        frappe.throw(_("{0}").format(error))
 # WHEN USING SALES INVOICES END
 
     # def __init__(self, *args, **kwargs):
