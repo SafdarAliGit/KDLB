@@ -1,0 +1,89 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-05-03 22:46:40.220562",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "cargo_code",
+  "column_break_fxdx",
+  "cargo_name",
+  "section_break_gpgm",
+  "column_break_p6oj",
+  "rate",
+  "active"
+ ],
+ "fields": [
+  {
+   "fieldname": "cargo_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Cargo Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_fxdx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "cargo_code.item_name",
+   "fieldname": "cargo_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Cargo Name",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_gpgm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_p6oj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rate",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Rate",
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Active"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-05-03 22:46:40.220562",
+ "modified_by": "Administrator",
+ "module": "Billing",
+ "name": "Saptl Rates",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_preview_popup": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

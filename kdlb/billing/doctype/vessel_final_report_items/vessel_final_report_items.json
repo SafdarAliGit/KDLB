@@ -1,0 +1,62 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-05-17 14:13:27.037974",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "ships_agent",
+  "ships_agent_name",
+  "agent_group",
+  "import_teus__tons",
+  "export_teus__tons"
+ ],
+ "fields": [
+  {
+   "fieldname": "ships_agent",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Ships Agent ",
+   "options": "Customer"
+  },
+  {
+   "fetch_from": "ships_agent.customer_name",
+   "fieldname": "ships_agent_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Ships Agent Name"
+  },
+  {
+   "fetch_from": "ships_agent.customer_group",
+   "fieldname": "agent_group",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Agent Group"
+  },
+  {
+   "fieldname": "import_teus__tons",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Import Teus / Tons"
+  },
+  {
+   "fieldname": "export_teus__tons",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Export Teus / Tons"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-05-17 14:15:24.837924",
+ "modified_by": "Administrator",
+ "module": "Billing",
+ "name": "Vessel Final Report Items",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

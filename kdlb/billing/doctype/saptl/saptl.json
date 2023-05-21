@@ -1,0 +1,188 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "SAPTL-.YYYY.-.#####",
+ "creation": "2023-05-03 22:00:23.442196",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "vessel_code",
+  "customer",
+  "arrival_date",
+  "posting_date",
+  "column_break_ggtx",
+  "bill_no",
+  "vessel_description",
+  "due_date",
+  "section_break_n0nx",
+  "saptl_items",
+  "amended_from",
+  "section_break_01hp",
+  "column_break_yayx",
+  "column_break_shrq",
+  "fetch_items",
+  "column_break_pozm",
+  "total_import_teus",
+  "column_break_gpfv",
+  "total_export_teus",
+  "column_break_jdlu",
+  "total_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "arrival_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Arrival Date"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Saptl",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "saptl_items",
+   "fieldtype": "Table",
+   "label": "Items Detail",
+   "options": "Saptl Items"
+  },
+  {
+   "fieldname": "vessel_code",
+   "fieldtype": "Link",
+   "label": "Vessel Code",
+   "options": "Vessel"
+  },
+  {
+   "default": "None",
+   "fetch_from": "vessel_code.vessel_description",
+   "fieldname": "vessel_description",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Vessel Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ggtx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_n0nx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "None",
+   "fieldname": "bill_no",
+   "fieldtype": "Data",
+   "label": "Bill No",
+   "read_only": 1
+  },
+  {
+   "columns": 2,
+   "default": "0",
+   "fieldname": "total_import_teus",
+   "fieldtype": "Data",
+   "label": "Total Import",
+   "mandatory_depends_on": "eval:doc.vessel_code =='';",
+   "read_only": 1
+  },
+  {
+   "columns": 3,
+   "default": "0",
+   "fieldname": "total_export_teus",
+   "fieldtype": "Data",
+   "label": "Total Export",
+   "read_only": 1
+  },
+  {
+   "columns": 2,
+   "default": "0",
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "column_break_yayx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_01hp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_gpfv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_jdlu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_shrq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 3,
+   "fieldname": "fetch_items",
+   "fieldtype": "Button",
+   "label": "Fetch Items"
+  },
+  {
+   "fieldname": "column_break_pozm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "KPT",
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Party",
+   "options": "Customer"
+  },
+  {
+   "default": "Today",
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "label": "Due Date"
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-05-09 22:15:16.374907",
+ "modified_by": "Administrator",
+ "module": "Billing",
+ "name": "Saptl",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

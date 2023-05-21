@@ -7,6 +7,13 @@ app_description = "This is shiping and cargo management system"
 app_email = "safdar211@gmail.com"
 app_license = "MIT"
 
+
+
+override_doctype_class = {
+	"Customer": "kdlb.overrides.customer_overrides.CustomerOverrides",
+	"Sales Partner": "kdlb.overrides.sales_partner_overrides.SalesPartnerOverrides",
+	"Sales Invoice": "kdlb.overrides.sales_invoice_overrides.SalesInvoiceOverrides",
+}
 # Includes in <head>
 # ------------------
 
@@ -23,7 +30,7 @@ app_license = "MIT"
 
 # include js, css files in header of web form
 # webform_include_js = {"doctype": "public/js/doctype.js"}
-# webform_include_css = {"doctype": "public/css/doctype.css"}
+# webform_include_css = {"Bill Entry": "public/css/kdlb.css"}
 
 # include js in page
 # page_js = {"page" : "public/js/file.js"}
@@ -199,3 +206,4 @@ app_license = "MIT"
 # auth_hooks = [
 #	"kdlb.auth.validate"
 # ]
+required_apps = ["erpnext"]

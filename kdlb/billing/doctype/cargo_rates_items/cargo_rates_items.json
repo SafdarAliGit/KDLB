@@ -1,0 +1,66 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-05-16 20:02:29.419893",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_group",
+  "normal_rate",
+  "br_no_nr",
+  "special_rate",
+  "br_no_sr"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_group",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Group",
+   "options": "Item Group",
+   "reqd": 1
+  },
+  {
+   "default": "0.0",
+   "fieldname": "normal_rate",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Normal Rate",
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "fieldname": "br_no_nr",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "BR No (NR)"
+  },
+  {
+   "default": "0.0",
+   "fieldname": "special_rate",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Special Rate",
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "fieldname": "br_no_sr",
+   "fieldtype": "Data",
+   "label": "BR No (SR)"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-05-16 20:02:29.419893",
+ "modified_by": "Administrator",
+ "module": "Billing",
+ "name": "Cargo Rates Items",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

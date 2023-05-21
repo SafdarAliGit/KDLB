@@ -1,0 +1,364 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "color": "green",
+ "creation": "2023-04-14 17:33:34.139632",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "year",
+  "tc_no",
+  "ships_agent",
+  "amended_from",
+  "stevedore",
+  "kpt",
+  "vessel_code",
+  "berth",
+  "arrival_date",
+  "sail_on_date",
+  "nature_of_cargo",
+  "multiple_agents",
+  "column_break_niz2",
+  "bill_no",
+  "surcharge",
+  "ships_agent_name",
+  "stevedore_name",
+  "kpt_name",
+  "vessel_name",
+  "due_date",
+  "import_teus",
+  "export_teus",
+  "amount",
+  "amount_after_surcharge",
+  "cargo_name",
+  "surcharge_rate",
+  "rate",
+  "naming_series",
+  "item_group",
+  "abbr_agent",
+  "abbr_stevedore",
+  "abbr_kpt",
+  "posting_date",
+  "uom",
+  "section_break_pelc",
+  "vessel_final_report_items",
+  "company"
+ ],
+ "fields": [
+  {
+   "fieldname": "year",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Year",
+   "options": "Fiscal Year",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Vessel Final Report",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "tc_no",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "T.C N0.",
+   "search_index": 1
+  },
+  {
+   "default": "None",
+   "fetch_from": "vesel_code.vessel_description",
+   "fieldname": "vessel_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Vessel Description",
+   "read_only": 1
+  },
+  {
+   "fieldname": "berth",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_standard_filter": 1,
+   "label": "Berth",
+   "options": "Berth"
+  },
+  {
+   "fieldname": "arrival_date",
+   "fieldtype": "Date",
+   "label": "Vessel Arrival Date"
+  },
+  {
+   "fieldname": "sail_on_date",
+   "fieldtype": "Date",
+   "label": "Vessel Sail On Date"
+  },
+  {
+   "fieldname": "nature_of_cargo",
+   "fieldtype": "Link",
+   "label": "Nature Of Cargo",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "import_teus",
+   "fieldtype": "Float",
+   "label": "Import TEUs"
+  },
+  {
+   "fieldname": "export_teus",
+   "fieldtype": "Float",
+   "label": "Export TEUs",
+   "search_index": 1
+  },
+  {
+   "default": "0.0",
+   "fieldname": "amount",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Amount",
+   "read_only": 1
+  },
+  {
+   "default": "0.0",
+   "fieldname": "amount_after_surcharge",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Amount After Surcharge",
+   "read_only": 1
+  },
+  {
+   "default": "None",
+   "fieldname": "bill_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Bill No",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_niz2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fetch_from": "surcharge_rate.surcharge_rate",
+   "fieldname": "surcharge",
+   "fieldtype": "Float",
+   "label": "Surcharge"
+  },
+  {
+   "default": "2",
+   "fieldname": "surcharge_rate",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "options": "Surcharge"
+  },
+  {
+   "default": "0",
+   "fieldname": "rate",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Rate",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "label": "Due Date"
+  },
+  {
+   "fieldname": "ships_agent",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "label": "Select Ships Agent",
+   "options": "Customer",
+   "search_index": 1
+  },
+  {
+   "fieldname": "stevedore",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "label": "Select Stevedore",
+   "options": "Customer",
+   "search_index": 1
+  },
+  {
+   "fieldname": "kpt",
+   "fieldtype": "Link",
+   "label": "Select KPT",
+   "options": "Customer"
+  },
+  {
+   "default": "None",
+   "fetch_from": "ships_agent.customer_name",
+   "fieldname": "ships_agent_name",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Ships Agent Name",
+   "read_only": 1
+  },
+  {
+   "default": "None",
+   "fetch_from": "stevedore.customer_name",
+   "fieldname": "stevedore_name",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "label": "Stevedore Name",
+   "read_only": 1
+  },
+  {
+   "default": "None",
+   "fetch_from": "kpt.customer_name",
+   "fieldname": "kpt_name",
+   "fieldtype": "Data",
+   "label": "KPT Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "ships_agent.customer_group",
+   "fieldname": "abbr_agent",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Abbr Agent",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "stevedore.customer_group",
+   "fieldname": "abbr_stevedore",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Abbr Stevedore",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "kpt.customer_group",
+   "fieldname": "abbr_kpt",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Abbr KPT",
+   "read_only": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "CESS-BILL-.DD.-.MM.-.YYYY.-",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "nature_of_cargo.item_name",
+   "fieldname": "cargo_name",
+   "fieldtype": "Data",
+   "label": "Cargo Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "nature_of_cargo.item_group",
+   "fieldname": "item_group",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Item Group",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_pelc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval:doc.multiple_agents===1",
+   "fieldname": "vessel_final_report_items",
+   "fieldtype": "Table",
+   "label": "Vessel Final Report Items",
+   "options": "Vessel Final Report Items"
+  },
+  {
+   "default": "0",
+   "fieldname": "multiple_agents",
+   "fieldtype": "Check",
+   "label": "Multiple Agents"
+  },
+  {
+   "fieldname": "vessel_code",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "label": "Select Vessel Code",
+   "options": "Vessel",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date"
+  },
+  {
+   "fetch_from": "nature_of_cargo.stock_uom",
+   "fieldname": "uom",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "UOM",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "Agent Bill",
+   "link_fieldname": "bill_no"
+  },
+  {
+   "link_doctype": "Stevedore Bill",
+   "link_fieldname": "bill_no"
+  },
+  {
+   "link_doctype": "KPT Bill",
+   "link_fieldname": "bill_no"
+  }
+ ],
+ "modified": "2023-05-21 19:48:25.472050",
+ "modified_by": "Administrator",
+ "module": "Billing",
+ "name": "Vessel Final Report",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "arrival_date",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

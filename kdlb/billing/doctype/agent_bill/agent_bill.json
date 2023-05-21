@@ -1,0 +1,272 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "color": "green",
+ "creation": "2023-05-14 16:33:35.790830",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "year",
+  "tc_no",
+  "ships_agent",
+  "stevedore",
+  "kpt",
+  "vesel_code",
+  "berth",
+  "arrival_date",
+  "sail_on_date",
+  "nature_of_cargo",
+  "column_break_niz2",
+  "bill_no",
+  "surcharge",
+  "ships_agent_name",
+  "stevedore_name",
+  "kpt_name",
+  "vessel_name",
+  "due_date",
+  "import_teus",
+  "export_teus",
+  "amount",
+  "amount_after_surcharge",
+  "surcharge_rate",
+  "rate",
+  "amended_from",
+  "naming_series",
+  "abbr_agent",
+  "cargo_name"
+ ],
+ "fields": [
+  {
+   "fieldname": "year",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Year",
+   "options": "Fiscal Year",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "tc_no",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "T.C N0.",
+   "search_index": 1
+  },
+  {
+   "fieldname": "ships_agent",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "label": "Select Ships Agent",
+   "options": "Customer",
+   "search_index": 1
+  },
+  {
+   "fieldname": "stevedore",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "label": "Select Stevedore",
+   "options": "Customer",
+   "search_index": 1
+  },
+  {
+   "fieldname": "kpt",
+   "fieldtype": "Link",
+   "label": "Select KPT",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "vesel_code",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "label": "Select Vessel Code",
+   "options": "Vessel",
+   "reqd": 1
+  },
+  {
+   "fieldname": "berth",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_standard_filter": 1,
+   "label": "Berth",
+   "options": "Berth"
+  },
+  {
+   "fieldname": "arrival_date",
+   "fieldtype": "Date",
+   "label": "Vessel Arrival Date"
+  },
+  {
+   "fieldname": "sail_on_date",
+   "fieldtype": "Date",
+   "label": "Vessel Sail On Date"
+  },
+  {
+   "fieldname": "nature_of_cargo",
+   "fieldtype": "Link",
+   "label": "Nature Of Cargo",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_niz2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "None",
+   "fieldname": "bill_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Bill No",
+   "read_only": 1
+  },
+  {
+   "default": "1",
+   "fetch_from": "surcharge_rate.surcharge_rate",
+   "fieldname": "surcharge",
+   "fieldtype": "Float",
+   "label": "Surcharge"
+  },
+  {
+   "default": "None",
+   "fetch_from": "ships_agent.customer_name",
+   "fieldname": "ships_agent_name",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Ships Agent Name",
+   "read_only": 1
+  },
+  {
+   "default": "None",
+   "fetch_from": "stevedore.customer_name",
+   "fieldname": "stevedore_name",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "label": "Stevedore Name",
+   "read_only": 1
+  },
+  {
+   "default": "None",
+   "fetch_from": "kpt.customer_name",
+   "fieldname": "kpt_name",
+   "fieldtype": "Data",
+   "label": "KPT Name",
+   "read_only": 1
+  },
+  {
+   "default": "None",
+   "fetch_from": "vesel_code.vessel_description",
+   "fieldname": "vessel_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Vessel Description",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "label": "Due Date"
+  },
+  {
+   "fieldname": "import_teus",
+   "fieldtype": "Float",
+   "label": "Import TEUs"
+  },
+  {
+   "fieldname": "export_teus",
+   "fieldtype": "Float",
+   "label": "Export TEUs",
+   "search_index": 1
+  },
+  {
+   "default": "0.0",
+   "fieldname": "amount",
+   "fieldtype": "Float",
+   "label": "Amount",
+   "read_only": 1
+  },
+  {
+   "default": "0.0",
+   "fieldname": "amount_after_surcharge",
+   "fieldtype": "Float",
+   "label": "Amount After Surcharge",
+   "read_only": 1
+  },
+  {
+   "default": "2",
+   "fieldname": "surcharge_rate",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "options": "Surcharge"
+  },
+  {
+   "default": "0",
+   "fieldname": "rate",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Rate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Agent Bill",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "A-.DD.-.MM.-.YYYY.-"
+  },
+  {
+   "fieldname": "abbr_agent",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Abbr Agent",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cargo_name",
+   "fieldtype": "Data",
+   "label": "Cargo Name"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-05-17 12:28:11.022639",
+ "modified_by": "Administrator",
+ "module": "Billing",
+ "name": "Agent Bill",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "arrival_date",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
