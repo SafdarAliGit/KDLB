@@ -42,4 +42,4 @@ def get_cargo_rate(**args):
         return rate_dict
     except Exception as error:
         frappe.throw(_("{0}").format(error))
-        
+
