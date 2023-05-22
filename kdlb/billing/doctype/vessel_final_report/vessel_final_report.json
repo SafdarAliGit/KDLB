@@ -45,7 +45,11 @@
   "uom",
   "section_break_pelc",
   "vessel_final_report_items",
-  "company"
+  "company",
+  "agent_invoice_created",
+  "stevedore_invoice_created",
+  "kpt_invoice_created",
+  "multi_agent_invoice_created"
  ],
  "fields": [
   {
@@ -318,6 +322,42 @@
    "label": "Company",
    "options": "Company",
    "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "agent_invoice_created",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Agent Invoice Created?",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "stevedore_invoice_created",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Stevedore Invoice Created?",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "kpt_invoice_created",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "KPT Invoice Created?",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "multi_agent_invoice_created",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Multi Agent Invoice Created?",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -336,7 +376,7 @@
    "link_fieldname": "bill_no"
   }
  ],
- "modified": "2023-05-21 19:48:25.472050",
+ "modified": "2023-05-22 11:48:15.617429",
  "modified_by": "Administrator",
  "module": "Billing",
  "name": "Vessel Final Report",

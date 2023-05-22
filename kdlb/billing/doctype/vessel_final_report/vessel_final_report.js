@@ -222,8 +222,8 @@ frappe.ui.form.on("Vessel Final Report", {
                     },
                     callback: function (r) {
                         if (!r.exc) {
-                            frappe.model.sync(r.message);
-                            // frappe.set_route("Form", r.message.doctype, r.message.name);
+                            // frappe.model.sync(r.message);
+                            frappe.show_alert("Invoice Created");
                         }
                     }
                 });
@@ -239,8 +239,8 @@ frappe.ui.form.on("Vessel Final Report", {
                     },
                     callback: function (r) {
                         if (!r.exc) {
-                            frappe.model.sync(r.message);
-                            // frappe.set_route("Form", r.message.doctype, r.message.name);
+                            // frappe.model.sync(r.message);
+                            frappe.show_alert("Invoice Created");
                         }
                     }
                 });
@@ -278,8 +278,8 @@ frappe.ui.form.on("Vessel Final Report", {
                     },
                     callback: function (r) {
                         if (!r.exc) {
-                            frappe.model.sync(r.message);
-                            // frappe.set_route("Form", r.message.doctype, r.message.name);
+                            // frappe.model.sync(r.message);
+                            frappe.show_alert("Invoice Created");
                         }
                     }
                 });

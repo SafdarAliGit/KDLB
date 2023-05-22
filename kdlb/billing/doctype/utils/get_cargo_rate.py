@@ -1,5 +1,5 @@
 import frappe
-from frappe import _
+from frappe import _, DoesNotExistError
 from frappe.query_builder.functions import IfNull
 
 
@@ -38,8 +38,13 @@ def get_cargo_rate(**args):
             .where((child.parent == parent_name) & (child.item_group == item_group))
         )
         rate_array = query.run()[0]
-        rate_dict = {"normal_rate": rate_array[0], "special_rate": rate_array[1]}
-        return rate_dict
-    except Exception as error:
-        frappe.throw(_("{0}").format(error))
 
+        rate_dict = {"normal_rate": rate_array[0], "special_rate": rate_array[1]}
+        if rate_dict["normal_rate"] == 0:
+            frappe.throw(_("Normal rate not set"))
+        if rate_dict['special_rate'] == 0:
+            frappe.throw(_("Special rate not set"))
+
+    except:
+        return None
+    return rate_dict
