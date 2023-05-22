@@ -194,7 +194,6 @@ frappe.ui.form.on("Vessel Final Report", {
 
     refresh(frm) {
 
-
         frm.set_value("bill_no", frm.doc.name);
         // OPENS LEDGER
         if (frm.doc.docstatus > 0) {

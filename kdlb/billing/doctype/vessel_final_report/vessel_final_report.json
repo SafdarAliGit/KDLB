@@ -364,19 +364,11 @@
  "is_submittable": 1,
  "links": [
   {
-   "link_doctype": "Agent Bill",
-   "link_fieldname": "bill_no"
-  },
-  {
-   "link_doctype": "Stevedore Bill",
-   "link_fieldname": "bill_no"
-  },
-  {
-   "link_doctype": "KPT Bill",
+   "link_doctype": "Sales Invoice",
    "link_fieldname": "bill_no"
   }
  ],
- "modified": "2023-05-22 11:48:15.617429",
+ "modified": "2023-05-22 15:14:46.491562",
  "modified_by": "Administrator",
  "module": "Billing",
  "name": "Vessel Final Report",
