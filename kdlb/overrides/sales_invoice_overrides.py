@@ -10,11 +10,11 @@ from frappe.website.website_generator import WebsiteGenerator
 class SalesInvoiceOverrides(SalesInvoice):
     def autoname(self):
         if self.customer_group == "AGENT":
-            prefix = 'A-.DD.-.MM.-.YYYY.-'
+            prefix = 'A-.YYYY.-'
         elif self.customer_group == "STEVEDORE":
-            prefix = 'S-.DD.-.MM.-.YYYY.-'
+            prefix = 'S-.YYYY.-'
         elif self.customer_group == "KPT":
-            prefix = 'K-.DD.-.MM.-.YYYY.-'
+            prefix = 'K-.YYYY.-'
         else:
             frappe.msgprint(msg="Wrong naming !", title='Error')
         self.name = make_autoname(prefix+'.########')

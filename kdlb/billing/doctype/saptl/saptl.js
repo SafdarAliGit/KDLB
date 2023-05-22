@@ -101,7 +101,7 @@ frappe.ui.form.on('Saptl', {
         frm.set_query('customer', function (doc, cdt, cdn) {
             return {
                 filters: [
-                    ["Customer", "customer_role", "in", ["KPT"]]
+                    ["Customer", "customer_group", "in", ["SAPTL"]]
                 ]
             };
         });
