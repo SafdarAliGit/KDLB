@@ -17,20 +17,21 @@
   "kpt",
   "vessel_code",
   "berth",
+  "column_break_niz2",
   "arrival_date",
   "sail_on_date",
   "nature_of_cargo",
-  "multiple_agents",
-  "column_break_niz2",
-  "bill_no",
-  "surcharge",
-  "ships_agent_name",
-  "stevedore_name",
-  "kpt_name",
-  "vessel_name",
   "due_date",
   "import_teus",
   "export_teus",
+  "posting_date",
+  "column_break_2zcnf",
+  "ships_agent_name",
+  "stevedore_name",
+  "kpt_name",
+  "surcharge",
+  "bill_no",
+  "vessel_name",
   "amount",
   "amount_after_surcharge",
   "cargo_name",
@@ -41,9 +42,9 @@
   "abbr_agent",
   "abbr_stevedore",
   "abbr_kpt",
-  "posting_date",
   "uom",
   "section_break_pelc",
+  "multiple_agents",
   "vessel_final_report_items",
   "company",
   "agent_invoice_created",
@@ -80,7 +81,7 @@
   },
   {
    "default": "None",
-   "fetch_from": "vesel_code.vessel_description",
+   "fetch_from": "vessel_code.vessel_description",
    "fieldname": "vessel_name",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -258,7 +259,7 @@
    "fieldtype": "Select",
    "hidden": 1,
    "label": "Series",
-   "options": "CESS-BILL-.DD.-.MM.-.YYYY.-",
+   "options": "VFR-.DD.-.MM.-.YYYY.-",
    "read_only": 1
   },
   {
@@ -358,6 +359,10 @@
    "hidden": 1,
    "label": "Multi Agent Invoice Created?",
    "read_only": 1
+  },
+  {
+   "fieldname": "column_break_2zcnf",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -368,7 +373,7 @@
    "link_fieldname": "bill_no"
   }
  ],
- "modified": "2023-05-22 15:14:46.491562",
+ "modified": "2023-05-26 23:00:47.884514",
  "modified_by": "Administrator",
  "module": "Billing",
  "name": "Vessel Final Report",

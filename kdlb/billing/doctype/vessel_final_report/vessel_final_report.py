@@ -42,23 +42,31 @@ def submit_agent_invoice(source_name):
                     si.tc_no = source_name.tc_no
                     si.vessel_code = source_name.vessel_code
                     si.vessel_name = source_name.vessel_name
+                    si.berth = source_name.berth
                     si.arrival_date = source_name.arrival_date
                     si.sail_on_date = source_name.sail_on_date
                     si.nature_of_cargo = source_name.nature_of_cargo
+                    si.cargo_name = source_name.cargo_name
                     si.item_group = source_name.item_group
-                    si.import_teus = item.import_teus__tons
-                    si.export_teus = item.export_teus__tons
+
                     it = si.append("items", {})
+                    it.import_teus = item.import_teus__tons
+                    it.export_teus = item.export_teus__tons
                     it.item_code = source_name.nature_of_cargo
+                    it.surcharge_rate = source_name.surcharge
                     it.qty = item.import_teus__tons + item.export_teus__tons
                     # it.amount = source_name.amount
                     it.rate = rate_dict["normal_rate"]
+
+                    amount = it.qty * it.rate
+                    it.surcharge = amount * (it.surcharge_rate / 100)
+                    it.amount_after_surcharge = amount + it.surcharge
+
                     it.item_name = source_name.cargo_name
                     it.description = source_name.cargo_name
                     it.uom = source_name.uom
                     it.income_account = cost_center_and_income_ac_dict['income_account']
                     it.cost_center = cost_center_and_income_ac_dict['cost_center']
-                    print(f"------------------{it}-----------------")
                     si.submit()
                     # return si
                 except Exception as error:
@@ -92,18 +100,27 @@ def submit_agent_invoice(source_name):
                 si.tc_no = source_name.tc_no
                 si.vessel_code = source_name.vessel_code
                 si.vessel_name = source_name.vessel_name
+                si.berth = source_name.berth
                 si.arrival_date = source_name.arrival_date
                 si.sail_on_date = source_name.sail_on_date
                 si.nature_of_cargo = source_name.nature_of_cargo
+                si.cargo_name = source_name.cargo_name
                 si.item_group = source_name.item_group
-                si.import_teus = source_name.import_teus
-                si.export_teus = source_name.export_teus
+
 
                 it = si.append("items", {})
+                it.import_teus = source_name.import_teus
+                it.export_teus = source_name.export_teus
                 it.item_code = source_name.nature_of_cargo
+                it.surcharge_rate = source_name.surcharge
                 it.qty = source_name.import_teus + source_name.export_teus
                 # it.amount = source_name.amount
                 it.rate = rate_dict["normal_rate"]
+
+                amount = it.qty * it.rate
+                it.surcharge = amount * (it.surcharge_rate / 100)
+                it.amount_after_surcharge = amount + it.surcharge
+
                 it.item_name = source_name.cargo_name
                 it.description = source_name.cargo_name
                 it.uom = source_name.uom
@@ -145,18 +162,26 @@ def submit_stevedore_invoice(source_name):
             si.tc_no = source_name.tc_no
             si.vessel_code = source_name.vessel_code
             si.vessel_name = source_name.vessel_name
+            si.berth = source_name.berth
             si.arrival_date = source_name.arrival_date
             si.sail_on_date = source_name.sail_on_date
             si.nature_of_cargo = source_name.nature_of_cargo
+            si.cargo_name = source_name.cargo_name
             si.item_group = source_name.item_group
-            si.import_teus = source_name.import_teus
-            si.export_teus = source_name.export_teus
 
             it = si.append("items", {})
+            it.import_teus = source_name.import_teus
+            it.export_teus = source_name.export_teus
             it.item_code = source_name.nature_of_cargo
+            it.surcharge_rate = source_name.surcharge
             it.qty = source_name.import_teus + source_name.export_teus
             # it.amount = source_name.amount
             it.rate = rate_dict["normal_rate"]
+
+            amount = it.qty * it.rate
+            it.surcharge = amount * (it.surcharge_rate / 100)
+            it.amount_after_surcharge = amount + it.surcharge
+
             it.item_name = source_name.cargo_name
             it.description = source_name.cargo_name
             it.uom = source_name.uom
@@ -201,14 +226,20 @@ def submit_kpt_invoice(source_name):
             si.sail_on_date = source_name.sail_on_date
             si.nature_of_cargo = source_name.nature_of_cargo
             si.item_group = source_name.item_group
-            si.import_teus = source_name.import_teus
-            si.export_teus = source_name.export_teus
 
             it = si.append("items", {})
+            it.import_teus = source_name.import_teus
+            it.export_teus = source_name.export_teus
             it.item_code = source_name.nature_of_cargo
+            it.surcharge_rate = source_name.surcharge
             it.qty = source_name.import_teus + source_name.export_teus
             # it.amount = source_name.amount
             it.rate = rate_dict["normal_rate"]
+
+            amount = it.qty * it.rate
+            it.surcharge = amount * (it.surcharge_rate/100)
+            it.amount_after_surcharge = amount + it.surcharge
+
             it.item_name = source_name.cargo_name
             it.description = source_name.cargo_name
             it.uom = source_name.uom
