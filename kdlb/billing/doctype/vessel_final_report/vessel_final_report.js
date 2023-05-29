@@ -271,7 +271,7 @@ $(document).ready(function () {
         ' input[data-fieldname="tc_no"],input[data-fieldname="ships_agent"],input[data-fieldname="stevedore"],' +
         'input[data-fieldname="kpt"],input[data-fieldname="vessel_code"],input[data-fieldname="berth"],' +
         'input[data-fieldname="arrival_date"],input[data-fieldname="sail_on_date"],input[data-fieldname="nature_of_cargo"],' +
-        'input[data-fieldname="due_date"],input[data-fieldname="posting_date"]')
+        'input[data-fieldname="due_date"],input[data-fieldname="posting_date"],select[data-fieldname="rate_type"]')
         .css("background-color", "#FFE4C4");
 
     $('input[data-fieldname="import_teus"]').focus(function () {
@@ -350,6 +350,12 @@ $(document).ready(function () {
         $(this).css("background-color", "#50C878");
     });
     $('input[data-fieldname="posting_date"]').blur(function () {
+        $(this).css("background-color", "#FFE4C4");
+    });
+    $('select[data-fieldname="rate_type"]').focus(function () {
+        $(this).css("background-color", "#50C878");
+    });
+    $('select[data-fieldname="rate_type"]').blur(function () {
         $(this).css("background-color", "#FFE4C4");
     });
 

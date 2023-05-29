@@ -48,6 +48,7 @@ def submit_agent_invoice(source_name):
                     si.nature_of_cargo = source_name.nature_of_cargo
                     si.cargo_name = source_name.cargo_name
                     si.item_group = source_name.item_group
+                    si.rate_type = source_name.rate_type
 
                     it = si.append("items", {})
                     it.import_teus = item.import_teus__tons
@@ -56,11 +57,16 @@ def submit_agent_invoice(source_name):
                     it.surcharge_rate = source_name.surcharge
                     it.qty = item.import_teus__tons + item.export_teus__tons
                     # it.amount = source_name.amount
-                    it.rate = rate_dict["normal_rate"]
-
-                    amount = it.qty * it.rate
-                    it.surcharge = amount * (it.surcharge_rate / 100)
-                    it.amount_after_surcharge = amount + it.surcharge
+                    if source_name.rate_type == 'NR':
+                        it.rate = rate_dict["normal_rate"]
+                        amount = it.qty * it.rate
+                        it.surcharge = amount * (it.surcharge_rate / 100)
+                        it.amount_after_surcharge = amount + it.surcharge
+                    else:
+                        it.rate = rate_dict["special_rate"]
+                        amount = it.qty * it.rate
+                        it.surcharge = amount * (it.surcharge_rate / 100)
+                        it.amount_after_surcharge = amount + it.surcharge
 
                     it.item_name = source_name.cargo_name
                     it.description = source_name.cargo_name
@@ -106,6 +112,7 @@ def submit_agent_invoice(source_name):
                 si.nature_of_cargo = source_name.nature_of_cargo
                 si.cargo_name = source_name.cargo_name
                 si.item_group = source_name.item_group
+                si.rate_type = source_name.rate_type
 
 
                 it = si.append("items", {})
@@ -115,11 +122,16 @@ def submit_agent_invoice(source_name):
                 it.surcharge_rate = source_name.surcharge
                 it.qty = source_name.import_teus + source_name.export_teus
                 # it.amount = source_name.amount
-                it.rate = rate_dict["normal_rate"]
-
-                amount = it.qty * it.rate
-                it.surcharge = amount * (it.surcharge_rate / 100)
-                it.amount_after_surcharge = amount + it.surcharge
+                if source_name.rate_type == 'NR':
+                    it.rate = rate_dict["normal_rate"]
+                    amount = it.qty * it.rate
+                    it.surcharge = amount * (it.surcharge_rate / 100)
+                    it.amount_after_surcharge = amount + it.surcharge
+                else:
+                    it.rate = rate_dict["special_rate"]
+                    amount = it.qty * it.rate
+                    it.surcharge = amount * (it.surcharge_rate / 100)
+                    it.amount_after_surcharge = amount + it.surcharge
 
                 it.item_name = source_name.cargo_name
                 it.description = source_name.cargo_name
@@ -168,6 +180,7 @@ def submit_stevedore_invoice(source_name):
             si.nature_of_cargo = source_name.nature_of_cargo
             si.cargo_name = source_name.cargo_name
             si.item_group = source_name.item_group
+            si.rate_type = source_name.rate_type
 
             it = si.append("items", {})
             it.import_teus = source_name.import_teus
@@ -176,11 +189,16 @@ def submit_stevedore_invoice(source_name):
             it.surcharge_rate = source_name.surcharge
             it.qty = source_name.import_teus + source_name.export_teus
             # it.amount = source_name.amount
-            it.rate = rate_dict["normal_rate"]
-
-            amount = it.qty * it.rate
-            it.surcharge = amount * (it.surcharge_rate / 100)
-            it.amount_after_surcharge = amount + it.surcharge
+            if source_name.rate_type == 'NR':
+                it.rate = rate_dict["normal_rate"]
+                amount = it.qty * it.rate
+                it.surcharge = amount * (it.surcharge_rate / 100)
+                it.amount_after_surcharge = amount + it.surcharge
+            else:
+                it.rate = rate_dict["special_rate"]
+                amount = it.qty * it.rate
+                it.surcharge = amount * (it.surcharge_rate / 100)
+                it.amount_after_surcharge = amount + it.surcharge
 
             it.item_name = source_name.cargo_name
             it.description = source_name.cargo_name
@@ -226,6 +244,7 @@ def submit_kpt_invoice(source_name):
             si.sail_on_date = source_name.sail_on_date
             si.nature_of_cargo = source_name.nature_of_cargo
             si.item_group = source_name.item_group
+            si.rate_type = source_name.rate_type
 
             it = si.append("items", {})
             it.import_teus = source_name.import_teus
@@ -234,11 +253,17 @@ def submit_kpt_invoice(source_name):
             it.surcharge_rate = source_name.surcharge
             it.qty = source_name.import_teus + source_name.export_teus
             # it.amount = source_name.amount
-            it.rate = rate_dict["normal_rate"]
+            if source_name.rate_type == 'NR':
 
-            amount = it.qty * it.rate
-            it.surcharge = amount * (it.surcharge_rate/100)
-            it.amount_after_surcharge = amount + it.surcharge
+                it.rate = rate_dict["normal_rate"]
+                amount = it.qty * it.rate
+                it.surcharge = amount * (it.surcharge_rate / 100)
+                it.amount_after_surcharge = amount + it.surcharge
+            else:
+                it.rate = rate_dict["special_rate"]
+                amount = it.qty * it.rate
+                it.surcharge = amount * (it.surcharge_rate / 100)
+                it.amount_after_surcharge = amount + it.surcharge
 
             it.item_name = source_name.cargo_name
             it.description = source_name.cargo_name

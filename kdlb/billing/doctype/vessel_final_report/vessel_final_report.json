@@ -10,6 +10,7 @@
  "engine": "InnoDB",
  "field_order": [
   "year",
+  "rate_type",
   "tc_no",
   "ships_agent",
   "amended_from",
@@ -363,6 +364,14 @@
   {
    "fieldname": "column_break_2zcnf",
    "fieldtype": "Column Break"
+  },
+  {
+   "columns": 3,
+   "default": "NR",
+   "fieldname": "rate_type",
+   "fieldtype": "Select",
+   "label": "Rate Type",
+   "options": "NR\nSR"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -373,7 +382,7 @@
    "link_fieldname": "bill_no"
   }
  ],
- "modified": "2023-05-29 22:27:43.290427",
+ "modified": "2023-05-29 23:05:32.091034",
  "modified_by": "Administrator",
  "module": "Billing",
  "name": "Vessel Final Report",
