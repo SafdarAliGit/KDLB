@@ -161,7 +161,7 @@
    "label": "Surcharge"
   },
   {
-   "default": "2",
+   "default": "1",
    "fieldname": "surcharge_rate",
    "fieldtype": "Link",
    "hidden": 1,
@@ -373,7 +373,7 @@
    "link_fieldname": "bill_no"
   }
  ],
- "modified": "2023-05-26 23:00:47.884514",
+ "modified": "2023-05-29 22:27:43.290427",
  "modified_by": "Administrator",
  "module": "Billing",
  "name": "Vessel Final Report",
