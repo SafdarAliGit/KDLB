@@ -15,11 +15,6 @@ class SalesInvoiceOverrides(SalesInvoice):
             prefix = 'S-.YYYY.-'
         elif self.customer_group == "KPT":
             prefix = 'K-.YYYY.-'
-            prefix = 'A-.DD.-.MM.-.YYYY.-'
-        elif self.customer_group == "STEVEDORE":
-            prefix = 'S-.DD.-.MM.-.YYYY.-'
-        elif self.customer_group == "KPT":
-            prefix = 'K-.DD.-.MM.-.YYYY.-'
         else:
             frappe.msgprint(msg="Wrong naming !", title='Error')
         self.name = make_autoname(prefix+'.########')
