@@ -5,6 +5,25 @@
 const obj = {}
 
 frappe.ui.form.on("Vessel Final Report", {
+    onload: function (frm) {
+
+        if (frm.doc.__islocal) {
+
+            frappe.db.get_single_value('Due Date Days', 'due_date_days')
+                .then(function (value) {
+                    if (value) {
+                        var defaultDueDate = frappe.datetime.add_days(frappe.datetime.get_today(), value);
+                        frm.set_value('due_date', defaultDueDate);
+                    } else {
+                        var defaultDueDate = frappe.datetime.add_days(frappe.datetime.get_today(), 45);
+                        frm.set_value('due_date', defaultDueDate);
+                    }
+                }).catch(function (err) {
+                frappe.throw("Error:", err);
+            });
+
+        }
+    },
 
     arrival_date: function (frm) {
         if ((frm.doc.import_teus > 0) || (frm.doc.export_teus > 0)) {

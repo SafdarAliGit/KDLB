@@ -78,8 +78,8 @@ def submit_agent_invoice(source_name):
                 except Exception as error:
                     frappe.throw(_("Error occured in saving invoice for {0}").format(customer_group))
 
-                source_name.multi_agent_invoice_created = 1
-                source_name.save()
+            source_name.multi_agent_invoice_created = 1
+            source_name.save()
         else:
             frappe.throw(_("Invoice already created"))
     else:
