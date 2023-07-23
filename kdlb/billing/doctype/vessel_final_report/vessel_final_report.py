@@ -219,89 +219,88 @@ def submit_stevedore_invoice(source_name):
 
 
 # ------------------FOR AGENT-----------------
-@frappe.whitelist()
-def submit_agent_invoice(source_name):
-    try:
-        source_name = frappe.get_doc("Vessel Final Report", source_name)
-        si = frappe.new_doc("Sales Invoice")
-
-        customer_group = source_name.abbr_agent
-        item_group = source_name.item_group
-        date = source_name.arrival_date
-        rate_dict = get_cargo_rate(customer_group=customer_group, item_group=item_group, date=date)
-        cost_center_and_income_ac_dict = get_cost_center_and_income_account(source_name.company)
-        si.customer_group = customer_group
-        si.posting_date = source_name.posting_date
-        si.due_date = source_name.due_date
-        si.customer = source_name.ships_agent
-        si.bill_no = source_name.bill_no
-        si.tc_no = source_name.tc_no
-        si.vessel_code = source_name.vessel_code
-        si.vessel_name = source_name.vessel_name
-        si.arrival_date = source_name.arrival_date
-        si.sail_on_date = source_name.sail_on_date
-        si.nature_of_cargo = source_name.nature_of_cargo
-        si.item_group = source_name.item_group
-        si.import_teus = source_name.import_teus
-        si.export_teus = source_name.export_teus
-
-        it = si.append("items", {})
-        it.item_code = source_name.nature_of_cargo
-        it.qty = source_name.import_teus + source_name.export_teus
-        # it.amount = source_name.amount
-        it.rate = rate_dict["normal_rate"]
-        it.item_name = source_name.cargo_name
-        it.description = source_name.cargo_name
-        it.uom = source_name.uom
-        it.income_account = cost_center_and_income_ac_dict['income_account']
-        it.cost_center = cost_center_and_income_ac_dict['cost_center']
-        si.submit()
-        # return si
-    except Exception as error:
-        frappe.msgprint(msg="Some error occured !", title='Error',
-                        raise_exception=error)
+# @frappe.whitelist()
+# def submit_agent_invoice(source_name):
+#     try:
+#         source_name = frappe.get_doc("Vessel Final Report", source_name)
+#         si = frappe.new_doc("Sales Invoice")
+#
+#         customer_group = source_name.abbr_agent
+#         item_group = source_name.item_group
+#         date = source_name.arrival_date
+#         rate_dict = get_cargo_rate(customer_group=customer_group, item_group=item_group, date=date)
+#         cost_center_and_income_ac_dict = get_cost_center_and_income_account(source_name.company)
+#         si.customer_group = customer_group
+#         si.posting_date = source_name.posting_date
+#         si.due_date = source_name.due_date
+#         si.customer = source_name.ships_agent
+#         si.bill_no = source_name.bill_no
+#         si.tc_no = source_name.tc_no
+#         si.vessel_code = source_name.vessel_code
+#         si.vessel_name = source_name.vessel_name
+#         si.arrival_date = source_name.arrival_date
+#         si.sail_on_date = source_name.sail_on_date
+#         si.nature_of_cargo = source_name.nature_of_cargo
+#         si.item_group = source_name.item_group
+#         si.import_teus = source_name.import_teus
+#         si.export_teus = source_name.export_teus
+#
+#         it = si.append("items", {})
+#         it.item_code = source_name.nature_of_cargo
+#         it.qty = source_name.import_teus + source_name.export_teus
+#         # it.amount = source_name.amount
+#         it.rate = rate_dict["normal_rate"]
+#         it.item_name = source_name.cargo_name
+#         it.description = source_name.cargo_name
+#         it.uom = source_name.uom
+#         it.income_account = cost_center_and_income_ac_dict['income_account']
+#         it.cost_center = cost_center_and_income_ac_dict['cost_center']
+#         si.submit()
+#         # return si
+#     except Exception as error:
+#         frappe.throw(f"{error}")
 # ------------------FOR STEVEDORE--------------------
-@frappe.whitelist()
-def submit_stevedore_invoice(source_name):
-    try:
-        source_name = frappe.get_doc("Vessel Final Report", source_name)
-        si = frappe.new_doc("Sales Invoice")
-
-        customer_group = source_name.abbr_stevedore
-        item_group = source_name.item_group
-        date = source_name.arrival_date
-        rate_dict = get_cargo_rate(customer_group=customer_group, item_group=item_group, date=date)
-        cost_center_and_income_ac_dict = get_cost_center_and_income_account(source_name.company)
-        si.customer_group = customer_group
-        si.posting_date = source_name.posting_date
-        si.due_date = source_name.due_date
-        si.customer = source_name.stevedore
-        si.bill_no = source_name.bill_no
-        si.tc_no = source_name.tc_no
-        si.vessel_code = source_name.vessel_code
-        si.vessel_name = source_name.vessel_name
-        si.arrival_date = source_name.arrival_date
-        si.sail_on_date = source_name.sail_on_date
-        si.nature_of_cargo = source_name.nature_of_cargo
-        si.item_group = source_name.item_group
-        si.import_teus = source_name.import_teus
-        si.export_teus = source_name.export_teus
-
-        it = si.append("items", {})
-        it.item_code = source_name.nature_of_cargo
-        it.qty = source_name.import_teus + source_name.export_teus
-        # it.amount = source_name.amount
-        it.rate = rate_dict["normal_rate"]
-        it.item_name = source_name.cargo_name
-        it.description = source_name.cargo_name
-        it.uom = source_name.uom
-        it.income_account = cost_center_and_income_ac_dict['income_account']
-        it.cost_center = cost_center_and_income_ac_dict['cost_center']
-        si.submit()
-        # return si
-    except Exception as error:
-        frappe.msgprint(msg="Some error occured !", title='Error',
-                        raise_exception=error)
+# @frappe.whitelist()
+# def submit_stevedore_invoice(source_name):
+#     try:
+#         source_name = frappe.get_doc("Vessel Final Report", source_name)
+#         si = frappe.new_doc("Sales Invoice")
+#
+#         customer_group = source_name.abbr_stevedore
+#         item_group = source_name.item_group
+#         date = source_name.arrival_date
+#         rate_dict = get_cargo_rate(customer_group=customer_group, item_group=item_group, date=date)
+#         cost_center_and_income_ac_dict = get_cost_center_and_income_account(source_name.company)
+#         si.customer_group = customer_group
+#         si.posting_date = source_name.posting_date
+#         si.due_date = source_name.due_date
+#         si.customer = source_name.stevedore
+#         si.bill_no = source_name.bill_no
+#         si.tc_no = source_name.tc_no
+#         si.vessel_code = source_name.vessel_code
+#         si.vessel_name = source_name.vessel_name
+#         si.arrival_date = source_name.arrival_date
+#         si.sail_on_date = source_name.sail_on_date
+#         si.nature_of_cargo = source_name.nature_of_cargo
+#         si.item_group = source_name.item_group
+#         si.import_teus = source_name.import_teus
+#         si.export_teus = source_name.export_teus
+#
+#         it = si.append("items", {})
+#         it.item_code = source_name.nature_of_cargo
+#         it.qty = source_name.import_teus + source_name.export_teus
+#         # it.amount = source_name.amount
+#         it.rate = rate_dict["normal_rate"]
+#         it.item_name = source_name.cargo_name
+#         it.description = source_name.cargo_name
+#         it.uom = source_name.uom
+#         it.income_account = cost_center_and_income_ac_dict['income_account']
+#         it.cost_center = cost_center_and_income_ac_dict['cost_center']
+#         si.submit()
+#         # return si
+#     except Exception as error:
+#         frappe.msgprint(msg="Some error occured !", title='Error',
+#                         raise_exception=error)
 
 
 # ------------------FOR KPT--------------------
@@ -455,45 +454,45 @@ def submit_kpt_invoice(source_name):
 #     kpt_doc.update(self.fields)
 #     kpt_doc.insert()
 
-    try:
-        source_name = frappe.get_doc("Vessel Final Report", source_name)
-        si = frappe.new_doc("Sales Invoice")
-
-        customer_group = source_name.abbr_kpt
-        item_group = source_name.item_group
-        date = source_name.arrival_date
-        rate_dict = get_cargo_rate(customer_group=customer_group, item_group=item_group, date=date)
-        cost_center_and_income_ac_dict = get_cost_center_and_income_account(source_name.company)
-        si.customer_group = customer_group
-        si.posting_date = source_name.posting_date
-        si.due_date = source_name.due_date
-        si.customer = source_name.kpt
-        si.bill_no = source_name.bill_no
-        si.tc_no = source_name.tc_no
-        si.vessel_code = source_name.vessel_code
-        si.vessel_name = source_name.vessel_name
-        si.arrival_date = source_name.arrival_date
-        si.sail_on_date = source_name.sail_on_date
-        si.nature_of_cargo = source_name.nature_of_cargo
-        si.item_group = source_name.item_group
-        si.import_teus = source_name.import_teus
-        si.export_teus = source_name.export_teus
-
-        it = si.append("items", {})
-        it.item_code = source_name.nature_of_cargo
-        it.qty = source_name.import_teus + source_name.export_teus
-        # it.amount = source_name.amount
-        it.rate = rate_dict["normal_rate"]
-        it.item_name = source_name.cargo_name
-        it.description = source_name.cargo_name
-        it.uom = source_name.uom
-        it.income_account = cost_center_and_income_ac_dict['income_account']
-        it.cost_center = cost_center_and_income_ac_dict['cost_center']
-        si.submit()
-        # return si
-    except Exception as error:
-        frappe.msgprint(msg="Some error occured !", title='Error',
-                        raise_exception=error)
+    # try:
+    #     source_name = frappe.get_doc("Vessel Final Report", source_name)
+    #     si = frappe.new_doc("Sales Invoice")
+    #
+    #     customer_group = source_name.abbr_kpt
+    #     item_group = source_name.item_group
+    #     date = source_name.arrival_date
+    #     rate_dict = get_cargo_rate(customer_group=customer_group, item_group=item_group, date=date)
+    #     cost_center_and_income_ac_dict = get_cost_center_and_income_account(source_name.company)
+    #     si.customer_group = customer_group
+    #     si.posting_date = source_name.posting_date
+    #     si.due_date = source_name.due_date
+    #     si.customer = source_name.kpt
+    #     si.bill_no = source_name.bill_no
+    #     si.tc_no = source_name.tc_no
+    #     si.vessel_code = source_name.vessel_code
+    #     si.vessel_name = source_name.vessel_name
+    #     si.arrival_date = source_name.arrival_date
+    #     si.sail_on_date = source_name.sail_on_date
+    #     si.nature_of_cargo = source_name.nature_of_cargo
+    #     si.item_group = source_name.item_group
+    #     si.import_teus = source_name.import_teus
+    #     si.export_teus = source_name.export_teus
+    #
+    #     it = si.append("items", {})
+    #     it.item_code = source_name.nature_of_cargo
+    #     it.qty = source_name.import_teus + source_name.export_teus
+    #     # it.amount = source_name.amount
+    #     it.rate = rate_dict["normal_rate"]
+    #     it.item_name = source_name.cargo_name
+    #     it.description = source_name.cargo_name
+    #     it.uom = source_name.uom
+    #     it.income_account = cost_center_and_income_ac_dict['income_account']
+    #     it.cost_center = cost_center_and_income_ac_dict['cost_center']
+    #     si.submit()
+    #     # return si
+    # except Exception as error:
+    #     frappe.msgprint(msg="Some error occured !", title='Error',
+    #                     raise_exception=error)
 # WHEN USING SALES INVOICES END
 
     # def __init__(self, *args, **kwargs):
