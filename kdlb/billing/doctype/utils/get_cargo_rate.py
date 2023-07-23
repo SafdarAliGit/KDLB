@@ -58,5 +58,9 @@ def get_cargo_rate(**args):
         return rate_dict
     except Exception as error:
         frappe.throw(_("{0}").format(error))
+<<<<<<< HEAD
         
 >>>>>>> 41266be (invoices creation done)
+=======
+
+>>>>>>> 354109c (invoices doen)
