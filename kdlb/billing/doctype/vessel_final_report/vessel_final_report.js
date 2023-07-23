@@ -1,120 +1,10 @@
 // Copyright (c) 2023, TechVentural and contributors
 // For license information, please see license.txt
-<<<<<<< HEAD
-=======
-$(document).ready(function () {
-
-// FUNCTION TO ADD TAB INDEX AND NAVIGATE TO ON ENTER KEY
-    $(function () {
-        var tabindex = 1;
-        $('input,select').each(function () {
-            if (this.type != "hidden") {
-                var $input = $(this);
-                $input.attr("tabindex", tabindex);
-                tabindex++;
-            }
-        });
-
-        $('input,select').on('keypress', function (e) {
-            e.which !== 13 || $('[tabIndex=' + (+this.tabIndex + 1) + ']')[0].focus();
-        });
-    });
-// =====================
-    $('input[data-fieldname="import_teus"], input[data-fieldname="export_teus"],' +
-        ' input[data-fieldname="tc_no"],input[data-fieldname="ships_agent"],input[data-fieldname="stevedore"],' +
-        'input[data-fieldname="kpt"],input[data-fieldname="vesel_code"],input[data-fieldname="berth"],' +
-        'input[data-fieldname="arrival_date"],input[data-fieldname="sail_on_date"],input[data-fieldname="nature_of_cargo"],' +
-        'input[data-fieldname="due_date"],input[data-fieldname="posting_date"]')
-        .css("background-color", "#FFE4C4");
-
-    $('input[data-fieldname="import_teus"]').focus(function () {
-        $(this).css("background-color", "#50C878");
-    });
-    $('input[data-fieldname="import_teus"]').blur(function () {
-        $(this).css("background-color", "#FFE4C4");
-    });
-    $('input[data-fieldname="export_teus"]').focus(function () {
-        $(this).css("background-color", "#50C878");
-    });
-    $('input[data-fieldname="export_teus"]').blur(function () {
-        $(this).css("background-color", "#FFE4C4");
-    });
-    $('input[data-fieldname="tc_no"]').focus(function () {
-        $(this).css("background-color", "#50C878");
-    });
-    $('input[data-fieldname="tc_no"]').blur(function () {
-        $(this).css("background-color", "#FFE4C4");
-    });
-    $('input[data-fieldname="ships_agent"]').focus(function () {
-        $(this).css("background-color", "#50C878");
-    });
-    $('input[data-fieldname="ships_agent"]').blur(function () {
-        $(this).css("background-color", "#FFE4C4");
-    });
-    $('input[data-fieldname="stevedore"]').focus(function () {
-        $(this).css("background-color", "#50C878");
-    });
-    $('input[data-fieldname="stevedore"]').blur(function () {
-        $(this).css("background-color", "#FFE4C4");
-    });
-    $('input[data-fieldname="kpt"]').focus(function () {
-        $(this).css("background-color", "#50C878");
-    });
-    $('input[data-fieldname="kpt"]').blur(function () {
-        $(this).css("background-color", "#FFE4C4");
-    });
-    $('input[data-fieldname="berth"]').focus(function () {
-        $(this).css("background-color", "#50C878");
-    });
-    $('input[data-fieldname="berth"]').blur(function () {
-        $(this).css("background-color", "#FFE4C4");
-    });
-    $('input[data-fieldname="vesel_code"]').focus(function () {
-        $(this).css("background-color", "#50C878");
-    });
-    $('input[data-fieldname="vesel_code"]').blur(function () {
-        $(this).css("background-color", "#FFE4C4");
-    });
-    $('input[data-fieldname="arrival_date"]').focus(function () {
-        $(this).css("background-color", "#50C878");
-    });
-    $('input[data-fieldname="arrival_date"]').blur(function () {
-        $(this).css("background-color", "#FFE4C4");
-    });
-    $('input[data-fieldname="sail_on_date"]').focus(function () {
-        $(this).css("background-color", "#50C878");
-    });
-    $('input[data-fieldname="sail_on_date"]').blur(function () {
-        $(this).css("background-color", "#FFE4C4");
-    });
-    $('input[data-fieldname="nature_of_cargo"]').focus(function () {
-        $(this).css("background-color", "#50C878");
-    });
-    $('input[data-fieldname="nature_of_cargo"]').blur(function () {
-        $(this).css("background-color", "#FFE4C4");
-    });
-    $('input[data-fieldname="due_date"]').focus(function () {
-        $(this).css("background-color", "#50C878");
-    });
-    $('input[data-fieldname="due_date"]').blur(function () {
-        $(this).css("background-color", "#FFE4C4");
-    });
-    $('input[data-fieldname="posting_date"]').focus(function () {
-        $(this).css("background-color", "#50C878");
-    });
-    $('input[data-fieldname="posting_date"]').blur(function () {
-        $(this).css("background-color", "#FFE4C4");
-    });
-
-
-});
->>>>>>> 41266be (invoices creation done)
 
 
 const obj = {}
 
 frappe.ui.form.on("Vessel Final Report", {
-<<<<<<< HEAD
     onload: function (frm) {
 
         if (frm.doc.__islocal) {
@@ -123,7 +13,8 @@ frappe.ui.form.on("Vessel Final Report", {
                 .then(function (dueDateDays) {
                     // Fetch surcharge_rate
                     frappe.db.get_single_value('KDLB Settings', 'surcharge_rate')
-                        .then(function (surchargeRate) {
+                        .then(function (values) {
+                            var surchargeRate = values.surcharge_rate;
                             if (dueDateDays) {
                                 var defaultDueDate = frappe.datetime.add_days(frappe.datetime.get_today(), dueDateDays);
                                 frm.set_value('due_date', defaultDueDate);
@@ -149,8 +40,6 @@ frappe.ui.form.on("Vessel Final Report", {
 
         }
     },
-=======
->>>>>>> 41266be (invoices creation done)
 
     arrival_date: function (frm) {
         if ((frm.doc.import_teus > 0) || (frm.doc.export_teus > 0)) {
@@ -234,7 +123,6 @@ frappe.ui.form.on("Vessel Final Report", {
 
     refresh(frm) {
 
-<<<<<<< HEAD
         frm.set_value("bill_no", frm.doc.name);
         // OPENS LEDGER
         // if (frm.doc.docstatus > 0) {
@@ -250,24 +138,6 @@ frappe.ui.form.on("Vessel Final Report", {
         //         frappe.set_route("query-report", "General Ledger");
         //     });
         // }
-=======
-
-        frm.set_value("bill_no", frm.doc.name);
-        // OPENS LEDGER
-        if (frm.doc.docstatus > 0) {
-            frm.add_custom_button(__('Accounting Ledger'), function () {
-                frappe.route_options = {
-                    voucher_no: frm.doc.name,
-                    from_date: frm.doc.posting_date,
-                    to_date: moment(frm.doc.modified).format('YYYY-MM-DD'),
-                    company: frm.doc.company,
-                    group_by: "Group by Voucher (Consolidated)",
-                    show_cancelled_entries: frm.doc.docstatus === 2
-                };
-                frappe.set_route("query-report", "General Ledger");
-            });
-        }
->>>>>>> 41266be (invoices creation done)
         // TO GENERATE CESS BILLS
         if (frm.doc.docstatus === 1 && frm.doc.status !== 'Closed') {
             // AGENT BILL GENERATION
@@ -280,13 +150,8 @@ frappe.ui.form.on("Vessel Final Report", {
                     },
                     callback: function (r) {
                         if (!r.exc) {
-<<<<<<< HEAD
                             // frappe.model.sync(r.message);
                             frappe.show_alert("Invoice Created");
-=======
-                            frappe.model.sync(r.message);
-                            // frappe.set_route("Form", r.message.doctype, r.message.name);
->>>>>>> 41266be (invoices creation done)
                         }
                     }
                 });
@@ -295,24 +160,15 @@ frappe.ui.form.on("Vessel Final Report", {
             // STEVEDORE BILL GENERATION
 
             frm.add_custom_button(__('Generate Stevedore Bill'), function () {
-<<<<<<< HEAD
                 frappe.call({
-=======
-                       frappe.call({
->>>>>>> 41266be (invoices creation done)
                     method: 'kdlb.billing.doctype.vessel_final_report.vessel_final_report.submit_stevedore_invoice',
                     args: {
                         'source_name': frm.doc.name
                     },
                     callback: function (r) {
                         if (!r.exc) {
-<<<<<<< HEAD
                             // frappe.model.sync(r.message);
                             frappe.show_alert("Invoice Created");
-=======
-                            frappe.model.sync(r.message);
-                            // frappe.set_route("Form", r.message.doctype, r.message.name);
->>>>>>> 41266be (invoices creation done)
                         }
                     }
                 });
@@ -350,13 +206,8 @@ frappe.ui.form.on("Vessel Final Report", {
                     },
                     callback: function (r) {
                         if (!r.exc) {
-<<<<<<< HEAD
                             // frappe.model.sync(r.message);
                             frappe.show_alert("Invoice Created");
-=======
-                            frappe.model.sync(r.message);
-                            // frappe.set_route("Form", r.message.doctype, r.message.name);
->>>>>>> 41266be (invoices creation done)
                         }
                     }
                 });
@@ -394,11 +245,7 @@ frappe.ui.form.on("Vessel Final Report", {
                 filters: [
                     ["Customer", "customer_group", "in", ["AGENT"]], ["Customer", "is_frozen", "in", [0]]
                 ]
-<<<<<<< HEAD
             };
-=======
-            }
->>>>>>> 41266be (invoices creation done)
         });
 
         frm.set_query("stevedore", function () {
@@ -406,11 +253,7 @@ frappe.ui.form.on("Vessel Final Report", {
                 filters: [
                     ["Customer", "customer_group", "in", ["STEVEDORE"]], ["Customer", "is_frozen", "in", [0]]
                 ]
-<<<<<<< HEAD
             };
-=======
-            }
->>>>>>> 41266be (invoices creation done)
         });
 
         frm.set_query("kpt", function () {
@@ -418,18 +261,13 @@ frappe.ui.form.on("Vessel Final Report", {
                 filters: [
                     ["Customer", "customer_group", "in", ["KPT"]], ["Customer", "is_frozen", "in", [0]]
                 ]
-<<<<<<< HEAD
             };
-=======
-            }
->>>>>>> 41266be (invoices creation done)
         });
         frm.set_query("nature_of_cargo", function () {
             return {
                 filters: [
                     ["Item", "item_group", "in", ["Container", 'Cargo']]
                 ]
-<<<<<<< HEAD
             };
         });
 
@@ -439,16 +277,12 @@ frappe.ui.form.on("Vessel Final Report", {
                     ["Customer", "customer_group", "in", ["AGENT"]]
                 ]
             };
-=======
-            }
->>>>>>> 41266be (invoices creation done)
         });
 
 
     }
 });
 
-<<<<<<< HEAD
 
 $(document).ready(function () {
 
@@ -562,5 +396,3 @@ $(document).ready(function () {
 
 
 });
-=======
->>>>>>> 41266be (invoices creation done)

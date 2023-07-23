@@ -37,7 +37,6 @@
   "surcharge",
   "bill_no",
   "vessel_name",
-=======
   "arrival_date",
   "sail_on_date",
   "nature_of_cargo",
@@ -52,7 +51,6 @@
   "due_date",
   "import_teus",
   "export_teus",
->>>>>>> 41266be (invoices creation done)
   "amount",
   "amount_after_surcharge",
   "cargo_name",
@@ -63,7 +61,6 @@
   "abbr_agent",
   "abbr_stevedore",
   "abbr_kpt",
-<<<<<<< HEAD
   "uom",
   "section_break_pelc",
   "multiple_agents",
@@ -73,13 +70,11 @@
   "stevedore_invoice_created",
   "kpt_invoice_created",
   "multi_agent_invoice_created"
-=======
   "posting_date",
   "uom",
   "section_break_pelc",
   "vessel_final_report_items",
   "company"
->>>>>>> 41266be (invoices creation done)
  ],
  "fields": [
   {
@@ -110,11 +105,9 @@
   },
   {
    "default": "None",
-<<<<<<< HEAD
+
    "fetch_from": "vessel_code.vessel_description",
-=======
-   "fetch_from": "vesel_code.vessel_description",
->>>>>>> 41266be (invoices creation done)
+
    "fieldname": "vessel_name",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -187,7 +180,6 @@
    "fieldtype": "Column Break"
   },
   {
-<<<<<<< HEAD
    "default": "0",
    "fieldname": "surcharge",
    "fieldtype": "Float",
@@ -196,8 +188,6 @@
   },
   {
    "default": "1",
-=======
-   "default": "1",
    "fetch_from": "surcharge_rate.surcharge_rate",
    "fieldname": "surcharge",
    "fieldtype": "Float",
@@ -205,7 +195,6 @@
   },
   {
    "default": "2",
->>>>>>> 41266be (invoices creation done)
    "fieldname": "surcharge_rate",
    "fieldtype": "Link",
    "hidden": 1,
@@ -303,11 +292,8 @@
    "fieldtype": "Select",
    "hidden": 1,
    "label": "Series",
-<<<<<<< HEAD
+
    "options": "VFR-.DD.-.MM.-.YYYY.-",
-=======
-   "options": "CESS-BILL-.DD.-.MM.-.YYYY.-",
->>>>>>> 41266be (invoices creation done)
    "read_only": 1
   },
   {
@@ -371,7 +357,7 @@
    "label": "Company",
    "options": "Company",
    "read_only": 1
-<<<<<<< HEAD
+
   },
   {
    "allow_on_submit": 1,
@@ -420,21 +406,19 @@
    "fieldtype": "Select",
    "label": "Rate Type",
    "options": "NR\nSR"
-=======
->>>>>>> 41266be (invoices creation done)
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [
   {
-<<<<<<< HEAD
+
    "link_doctype": "Sales Invoice",
    "link_fieldname": "bill_no"
   }
  ],
  "modified": "2023-07-23 16:21:38.791147",
-=======
+
    "link_doctype": "Agent Bill",
    "link_fieldname": "bill_no"
   },
@@ -448,7 +432,6 @@
   }
  ],
  "modified": "2023-05-21 19:48:25.472050",
->>>>>>> 41266be (invoices creation done)
  "modified_by": "Administrator",
  "module": "Billing",
  "name": "Vessel Final Report",

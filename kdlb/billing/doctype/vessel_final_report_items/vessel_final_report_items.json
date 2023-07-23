@@ -36,21 +36,18 @@
   },
   {
    "fieldname": "import_teus__tons",
-<<<<<<< HEAD
+
    "fieldtype": "Float",
-=======
-   "fieldtype": "Data",
->>>>>>> 41266be (invoices creation done)
+
    "in_list_view": 1,
    "label": "Import Teus / Tons"
   },
   {
    "fieldname": "export_teus__tons",
-<<<<<<< HEAD
+
    "fieldtype": "Float",
-=======
-   "fieldtype": "Data",
->>>>>>> 41266be (invoices creation done)
+
+
    "in_list_view": 1,
    "label": "Export Teus / Tons"
   }
@@ -58,11 +55,9 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
-<<<<<<< HEAD
+
  "modified": "2023-05-22 16:21:31.410814",
-=======
- "modified": "2023-05-17 14:15:24.837924",
->>>>>>> 41266be (invoices creation done)
+
  "modified_by": "Administrator",
  "module": "Billing",
  "name": "Vessel Final Report Items",

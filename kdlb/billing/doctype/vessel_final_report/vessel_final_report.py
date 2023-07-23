@@ -2,11 +2,9 @@
 # For license information, please see license.txt
 
 import frappe
-<<<<<<< HEAD
 from frappe import _
-=======
+
 # import frappe
->>>>>>> 41266be (invoices creation done)
 from frappe.model.document import Document
 from kdlb.billing.doctype.utils.get_cargo_rate import get_cargo_rate
 from kdlb.billing.doctype.utils.get_cost_center_and_income_account import get_cost_center_and_income_account
@@ -17,7 +15,7 @@ class VesselFinalReport(Document):
 
 
 # WHEN USING SALES INVOICES
-<<<<<<< HEAD
+
 # FOR MULTIPLE AGENTS AND SINGLE AGENT-----------------
 @frappe.whitelist()
 def submit_agent_invoice(source_name):
@@ -219,7 +217,7 @@ def submit_stevedore_invoice(source_name):
     else:
         frappe.throw(_("Invoice already created"))
 
-=======
+
 # ------------------FOR AGENT-----------------
 @frappe.whitelist()
 def submit_agent_invoice(source_name):
@@ -304,12 +302,12 @@ def submit_stevedore_invoice(source_name):
     except Exception as error:
         frappe.msgprint(msg="Some error occured !", title='Error',
                         raise_exception=error)
->>>>>>> 41266be (invoices creation done)
+
 
 # ------------------FOR KPT--------------------
 @frappe.whitelist()
 def submit_kpt_invoice(source_name):
-<<<<<<< HEAD
+
     source_name = frappe.get_doc("Vessel Final Report", source_name)
     if not source_name.kpt_invoice_created:
         try:
@@ -456,7 +454,7 @@ def submit_kpt_invoice(source_name):
 #     # self.autoname()
 #     kpt_doc.update(self.fields)
 #     kpt_doc.insert()
-=======
+
     try:
         source_name = frappe.get_doc("Vessel Final Report", source_name)
         si = frappe.new_doc("Sales Invoice")
@@ -581,7 +579,7 @@ def submit_kpt_invoice(source_name):
     #     # self.autoname()
     #     kpt_doc.update(self.fields)
     #     kpt_doc.insert()
->>>>>>> 41266be (invoices creation done)
+
 
 # .................................
 
