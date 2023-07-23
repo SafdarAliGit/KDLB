@@ -18,21 +18,6 @@
   "kpt",
   "vessel_code",
   "berth",
-  "column_break_niz2",
-  "arrival_date",
-  "sail_on_date",
-  "nature_of_cargo",
-  "due_date",
-  "import_teus",
-  "export_teus",
-  "posting_date",
-  "column_break_2zcnf",
-  "ships_agent_name",
-  "stevedore_name",
-  "kpt_name",
-  "surcharge",
-  "bill_no",
-  "vessel_name",
   "arrival_date",
   "sail_on_date",
   "nature_of_cargo",
@@ -57,15 +42,6 @@
   "abbr_agent",
   "abbr_stevedore",
   "abbr_kpt",
-  "uom",
-  "section_break_pelc",
-  "multiple_agents",
-  "vessel_final_report_items",
-  "company",
-  "agent_invoice_created",
-  "stevedore_invoice_created",
-  "kpt_invoice_created",
-  "multi_agent_invoice_created"
   "posting_date",
   "uom",
   "section_break_pelc",
@@ -101,9 +77,7 @@
   },
   {
    "default": "None",
-
    "fetch_from": "vessel_code.vessel_description",
-
    "fieldname": "vessel_name",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -288,7 +262,6 @@
    "fieldtype": "Select",
    "hidden": 1,
    "label": "Series",
-
    "options": "VFR-.DD.-.MM.-.YYYY.-",
    "read_only": 1
   },
@@ -353,7 +326,6 @@
    "label": "Company",
    "options": "Company",
    "read_only": 1
-
   },
   {
    "allow_on_submit": 1,
@@ -408,13 +380,6 @@
  "is_submittable": 1,
  "links": [
   {
-
-   "link_doctype": "Sales Invoice",
-   "link_fieldname": "bill_no"
-  }
- ],
- "modified": "2023-07-23 16:21:38.791147",
-
    "link_doctype": "Agent Bill",
    "link_fieldname": "bill_no"
   },
