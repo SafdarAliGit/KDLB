@@ -1,9 +1,9 @@
 import frappe
-<<<<<<< HEAD
+
 from frappe import _, DoesNotExistError
-=======
+
 from frappe import _
->>>>>>> 41266be (invoices creation done)
+
 from frappe.query_builder.functions import IfNull
 
 
@@ -42,7 +42,7 @@ def get_cargo_rate(**args):
             .where((child.parent == parent_name) & (child.item_group == item_group))
         )
         rate_array = query.run()[0]
-<<<<<<< HEAD
+
 
         rate_dict = {"normal_rate": rate_array[0], "special_rate": rate_array[1]}
         if rate_dict["normal_rate"] == 0:
@@ -53,14 +53,10 @@ def get_cargo_rate(**args):
     except:
         return None
     return rate_dict
-=======
-        rate_dict = {"normal_rate": rate_array[0], "special_rate": rate_array[1]}
-        return rate_dict
-    except Exception as error:
-        frappe.throw(_("{0}").format(error))
-<<<<<<< HEAD
-        
->>>>>>> 41266be (invoices creation done)
-=======
 
->>>>>>> 354109c (invoices doen)
+
+
+
+
+
+
