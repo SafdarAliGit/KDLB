@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestDueDateDays(FrappeTestCase):
+class TestKDLBSettings(FrappeTestCase):
 	pass

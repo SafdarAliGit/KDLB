@@ -9,18 +9,33 @@ frappe.ui.form.on("Vessel Final Report", {
 
         if (frm.doc.__islocal) {
 
-            frappe.db.get_single_value('Due Date Days', 'due_date_days')
-                .then(function (value) {
-                    if (value) {
-                        var defaultDueDate = frappe.datetime.add_days(frappe.datetime.get_today(), value);
-                        frm.set_value('due_date', defaultDueDate);
-                    } else {
-                        var defaultDueDate = frappe.datetime.add_days(frappe.datetime.get_today(), 45);
-                        frm.set_value('due_date', defaultDueDate);
-                    }
-                }).catch(function (err) {
-                frappe.throw("Error:", err);
-            });
+            frappe.db.get_single_value('KDLB Settings', 'due_date_days')
+                .then(function (dueDateDays) {
+                    // Fetch surcharge_rate
+                    frappe.db.get_single_value('KDLB Settings', 'surcharge_rate')
+                        .then(function (surchargeRate) {
+                            if (dueDateDays) {
+                                var defaultDueDate = frappe.datetime.add_days(frappe.datetime.get_today(), dueDateDays);
+                                frm.set_value('due_date', defaultDueDate);
+                            } else {
+                                var defaultDueDate = frappe.datetime.add_days(frappe.datetime.get_today(), 45);
+                                frm.set_value('due_date', defaultDueDate);
+                            }
+
+                            if (surchargeRate) {
+                                frm.set_value('surcharge', surchargeRate);
+                            } else {
+                                frm.set_value('surcharge', 0);
+                            }
+                        })
+                        .catch(function (err) {
+                            frappe.throw("Error fetching surcharge_rate:", err);
+                        });
+                })
+                .catch(function (err) {
+                    frappe.throw("Error fetching due_date_days:", err);
+                });
+
 
         }
     },

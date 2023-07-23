@@ -7,7 +7,8 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "due_date_days"
+  "due_date_days",
+  "surcharge_rate"
  ],
  "fields": [
   {
@@ -15,15 +16,22 @@
    "fieldname": "due_date_days",
    "fieldtype": "Int",
    "label": "Due Date Days"
+  },
+  {
+   "default": "5",
+   "fieldname": "surcharge_rate",
+   "fieldtype": "Float",
+   "label": "Surcharge Rate",
+   "precision": "2"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2023-07-23 10:20:20.445906",
+ "modified": "2023-07-23 16:09:56.601629",
  "modified_by": "Administrator",
  "module": "Billing",
- "name": "Due Date Days",
+ "name": "KDLB Settings",
  "owner": "Administrator",
  "permissions": [
   {

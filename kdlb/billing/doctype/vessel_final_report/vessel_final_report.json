@@ -155,11 +155,11 @@
    "fieldtype": "Column Break"
   },
   {
-   "default": "1",
-   "fetch_from": "surcharge_rate.surcharge_rate",
+   "default": "0",
    "fieldname": "surcharge",
    "fieldtype": "Float",
-   "label": "Surcharge"
+   "label": "Surcharge",
+   "read_only": 1
   },
   {
    "default": "1",
@@ -382,7 +382,7 @@
    "link_fieldname": "bill_no"
   }
  ],
- "modified": "2023-05-29 23:05:32.091034",
+ "modified": "2023-07-23 16:21:38.791147",
  "modified_by": "Administrator",
  "module": "Billing",
  "name": "Vessel Final Report",
