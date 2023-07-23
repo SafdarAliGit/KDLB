@@ -162,13 +162,6 @@
    "read_only": 1
   },
   {
-   "default": "0",
-   "fieldname": "surcharge",
-   "fieldtype": "Float",
-   "label": "Surcharge",
-   "read_only": 1
-  },
-  {
    "default": "2",
    "fieldname": "surcharge_rate",
    "fieldtype": "Link",
