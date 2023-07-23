@@ -14,6 +14,7 @@ frappe.ui.form.on("Vessel Final Report", {
                     // Fetch surcharge_rate
                     frappe.db.get_single_value('KDLB Settings', 'surcharge_rate')
                         .then(function (surchargeRate) {
+                            console.log(surchargeRate);
                             if (dueDateDays) {
                                 var defaultDueDate = frappe.datetime.add_days(frappe.datetime.get_today(), dueDateDays);
                                 frm.set_value('due_date', defaultDueDate);
