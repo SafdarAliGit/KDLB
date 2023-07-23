@@ -36,7 +36,6 @@
   "amount",
   "amount_after_surcharge",
   "cargo_name",
-  "surcharge_rate",
   "rate",
   "naming_series",
   "item_group",
@@ -160,13 +159,6 @@
    "fieldtype": "Float",
    "label": "Surcharge",
    "read_only": 1
-  },
-  {
-   "default": "2",
-   "fieldname": "surcharge_rate",
-   "fieldtype": "Link",
-   "hidden": 1,
-   "options": "Surcharge"
   },
   {
    "default": "0",
@@ -390,7 +382,7 @@
    "link_fieldname": "bill_no"
   }
  ],
- "modified": "2023-07-23 19:15:48.091358",
+ "modified": "2023-07-23 21:16:02.541477",
  "modified_by": "Administrator",
  "module": "Billing",
  "name": "Vessel Final Report",
