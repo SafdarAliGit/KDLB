@@ -1,5 +1,5 @@
 {
-<<<<<<< HEAD
+
  "custom_fields": [
   {
    "_assign": null,
@@ -302,9 +302,8 @@
    "width": null
   }
  ],
-=======
+
  "custom_fields": [],
->>>>>>> 41266be (invoices creation done)
  "custom_perms": [],
  "doctype": "Sales Invoice Item",
  "links": [],
