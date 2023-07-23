@@ -14,4 +14,7 @@ def get_cost_center_and_income_account(company):
         frappe.throw(_("Please set 'Cost Center' in Company {0}").format(company))
     data = {'income_account':income_account,'cost_center':cost_center}
     return data
+<<<<<<< HEAD
 
+=======
+>>>>>>> 41266be (invoices creation done)

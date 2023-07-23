@@ -138,11 +138,19 @@
    "fieldtype": "Column Break"
   },
   {
+<<<<<<< HEAD
    "fieldname": "customer",
    "fieldtype": "Link",
    "label": "Party",
    "options": "Customer",
    "reqd": 1
+=======
+   "default": "KPT",
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Party",
+   "options": "Customer"
+>>>>>>> 41266be (invoices creation done)
   },
   {
    "default": "Today",
@@ -161,7 +169,11 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
+<<<<<<< HEAD
  "modified": "2023-05-22 17:08:23.537473",
+=======
+ "modified": "2023-05-09 22:15:16.374907",
+>>>>>>> 41266be (invoices creation done)
  "modified_by": "Administrator",
  "module": "Billing",
  "name": "Saptl",

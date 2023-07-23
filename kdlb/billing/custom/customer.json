@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
  "custom_fields": [
   {
    "_assign": null,
@@ -61,6 +62,9 @@
    "width": null
   }
  ],
+=======
+ "custom_fields": [],
+>>>>>>> 41266be (invoices creation done)
  "custom_perms": [],
  "doctype": "Customer",
  "links": [
@@ -74,9 +78,15 @@
    "is_child_table": 0,
    "link_doctype": "Party Specific Item",
    "link_fieldname": "party",
+<<<<<<< HEAD
    "modified": "2023-05-19 16:49:54.619725",
    "modified_by": "Administrator",
    "name": "86f929c08f",
+=======
+   "modified": "2023-04-14 18:41:49.378165",
+   "modified_by": "Administrator",
+   "name": "94efe1ecfd",
+>>>>>>> 41266be (invoices creation done)
    "owner": "Administrator",
    "parent": "Customer",
    "parent_doctype": null,

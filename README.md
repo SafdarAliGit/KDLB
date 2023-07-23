@@ -7,4 +7,7 @@ This is shiping and cargo management system
 MIT# KDLB_Safdar
 # KDLB
 # KDLB
+<<<<<<< HEAD
 # KDLB
+=======
+>>>>>>> 41266be (invoices creation done)

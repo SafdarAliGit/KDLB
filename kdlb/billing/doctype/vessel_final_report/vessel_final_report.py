@@ -2,7 +2,11 @@
 # For license information, please see license.txt
 
 import frappe
+<<<<<<< HEAD
 from frappe import _
+=======
+# import frappe
+>>>>>>> 41266be (invoices creation done)
 from frappe.model.document import Document
 from kdlb.billing.doctype.utils.get_cargo_rate import get_cargo_rate
 from kdlb.billing.doctype.utils.get_cost_center_and_income_account import get_cost_center_and_income_account
@@ -13,6 +17,7 @@ class VesselFinalReport(Document):
 
 
 # WHEN USING SALES INVOICES
+<<<<<<< HEAD
 # FOR MULTIPLE AGENTS AND SINGLE AGENT-----------------
 @frappe.whitelist()
 def submit_agent_invoice(source_name):
@@ -214,10 +219,97 @@ def submit_stevedore_invoice(source_name):
     else:
         frappe.throw(_("Invoice already created"))
 
+=======
+# ------------------FOR AGENT-----------------
+@frappe.whitelist()
+def submit_agent_invoice(source_name):
+    try:
+        source_name = frappe.get_doc("Vessel Final Report", source_name)
+        si = frappe.new_doc("Sales Invoice")
+
+        customer_group = source_name.abbr_agent
+        item_group = source_name.item_group
+        date = source_name.arrival_date
+        rate_dict = get_cargo_rate(customer_group=customer_group, item_group=item_group, date=date)
+        cost_center_and_income_ac_dict = get_cost_center_and_income_account(source_name.company)
+        si.customer_group = customer_group
+        si.posting_date = source_name.posting_date
+        si.due_date = source_name.due_date
+        si.customer = source_name.ships_agent
+        si.bill_no = source_name.bill_no
+        si.tc_no = source_name.tc_no
+        si.vessel_code = source_name.vessel_code
+        si.vessel_name = source_name.vessel_name
+        si.arrival_date = source_name.arrival_date
+        si.sail_on_date = source_name.sail_on_date
+        si.nature_of_cargo = source_name.nature_of_cargo
+        si.item_group = source_name.item_group
+        si.import_teus = source_name.import_teus
+        si.export_teus = source_name.export_teus
+
+        it = si.append("items", {})
+        it.item_code = source_name.nature_of_cargo
+        it.qty = source_name.import_teus + source_name.export_teus
+        # it.amount = source_name.amount
+        it.rate = rate_dict["normal_rate"]
+        it.item_name = source_name.cargo_name
+        it.description = source_name.cargo_name
+        it.uom = source_name.uom
+        it.income_account = cost_center_and_income_ac_dict['income_account']
+        it.cost_center = cost_center_and_income_ac_dict['cost_center']
+        si.submit()
+        # return si
+    except Exception as error:
+        frappe.msgprint(msg="Some error occured !", title='Error',
+                        raise_exception=error)
+# ------------------FOR STEVEDORE--------------------
+@frappe.whitelist()
+def submit_stevedore_invoice(source_name):
+    try:
+        source_name = frappe.get_doc("Vessel Final Report", source_name)
+        si = frappe.new_doc("Sales Invoice")
+
+        customer_group = source_name.abbr_stevedore
+        item_group = source_name.item_group
+        date = source_name.arrival_date
+        rate_dict = get_cargo_rate(customer_group=customer_group, item_group=item_group, date=date)
+        cost_center_and_income_ac_dict = get_cost_center_and_income_account(source_name.company)
+        si.customer_group = customer_group
+        si.posting_date = source_name.posting_date
+        si.due_date = source_name.due_date
+        si.customer = source_name.stevedore
+        si.bill_no = source_name.bill_no
+        si.tc_no = source_name.tc_no
+        si.vessel_code = source_name.vessel_code
+        si.vessel_name = source_name.vessel_name
+        si.arrival_date = source_name.arrival_date
+        si.sail_on_date = source_name.sail_on_date
+        si.nature_of_cargo = source_name.nature_of_cargo
+        si.item_group = source_name.item_group
+        si.import_teus = source_name.import_teus
+        si.export_teus = source_name.export_teus
+
+        it = si.append("items", {})
+        it.item_code = source_name.nature_of_cargo
+        it.qty = source_name.import_teus + source_name.export_teus
+        # it.amount = source_name.amount
+        it.rate = rate_dict["normal_rate"]
+        it.item_name = source_name.cargo_name
+        it.description = source_name.cargo_name
+        it.uom = source_name.uom
+        it.income_account = cost_center_and_income_ac_dict['income_account']
+        it.cost_center = cost_center_and_income_ac_dict['cost_center']
+        si.submit()
+        # return si
+    except Exception as error:
+        frappe.msgprint(msg="Some error occured !", title='Error',
+                        raise_exception=error)
+>>>>>>> 41266be (invoices creation done)
 
 # ------------------FOR KPT--------------------
 @frappe.whitelist()
 def submit_kpt_invoice(source_name):
+<<<<<<< HEAD
     source_name = frappe.get_doc("Vessel Final Report", source_name)
     if not source_name.kpt_invoice_created:
         try:
@@ -364,6 +456,132 @@ def submit_kpt_invoice(source_name):
 #     # self.autoname()
 #     kpt_doc.update(self.fields)
 #     kpt_doc.insert()
+=======
+    try:
+        source_name = frappe.get_doc("Vessel Final Report", source_name)
+        si = frappe.new_doc("Sales Invoice")
+
+        customer_group = source_name.abbr_kpt
+        item_group = source_name.item_group
+        date = source_name.arrival_date
+        rate_dict = get_cargo_rate(customer_group=customer_group, item_group=item_group, date=date)
+        cost_center_and_income_ac_dict = get_cost_center_and_income_account(source_name.company)
+        si.customer_group = customer_group
+        si.posting_date = source_name.posting_date
+        si.due_date = source_name.due_date
+        si.customer = source_name.kpt
+        si.bill_no = source_name.bill_no
+        si.tc_no = source_name.tc_no
+        si.vessel_code = source_name.vessel_code
+        si.vessel_name = source_name.vessel_name
+        si.arrival_date = source_name.arrival_date
+        si.sail_on_date = source_name.sail_on_date
+        si.nature_of_cargo = source_name.nature_of_cargo
+        si.item_group = source_name.item_group
+        si.import_teus = source_name.import_teus
+        si.export_teus = source_name.export_teus
+
+        it = si.append("items", {})
+        it.item_code = source_name.nature_of_cargo
+        it.qty = source_name.import_teus + source_name.export_teus
+        # it.amount = source_name.amount
+        it.rate = rate_dict["normal_rate"]
+        it.item_name = source_name.cargo_name
+        it.description = source_name.cargo_name
+        it.uom = source_name.uom
+        it.income_account = cost_center_and_income_ac_dict['income_account']
+        it.cost_center = cost_center_and_income_ac_dict['cost_center']
+        si.submit()
+        # return si
+    except Exception as error:
+        frappe.msgprint(msg="Some error occured !", title='Error',
+                        raise_exception=error)
+# WHEN USING SALES INVOICES END
+
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.fields = {
+    #         'year': self.year,
+    #         'tc_no': self.tc_no,
+    #         'ships_agent': None,
+    #         'stevedore': None,
+    #         'kpt': None,
+    #         'vesel_code': self.vesel_code,
+    #         'berth': self.berth,
+    #         'arrival_date': self.arrival_date,
+    #         'sail_on_date': self.sail_on_date,
+    #         'nature_of_cargo': self.nature_of_cargo,
+    #         'bill_no': self.bill_no,
+    #         'surcharge': self.surcharge,
+    #         'ships_agent_name': None,
+    #         'stevedore_name': None,
+    #         'kpt_name': None,
+    #         'vessel_name': self.vessel_name,
+    #         'due_date': self.due_date,
+    #         'import_teus': self.import_teus,
+    #         'export_teus': self.export_teus,
+    #         'amount': self.amount,
+    #         'amount_after_surcharge': self.amount_after_surcharge,
+    #         'surcharge_rate': self.surcharge_rate,
+    #         'abbr_agent': None,
+    #         'abbr_stevedore': None,
+    #         'abbr_kpt': None,
+    #         'rate': self.rate
+    #     }
+    #
+    # def on_submit(self):
+    # def autoname(self):
+    #     print(f"-----------------Auton name ran---------------------------")
+    #     # if self.fields['abbr_agent']:
+    #     #     prefix = f"{self.abbr_agent}-.DD.-.MM.-.YYYY.-"
+    #     #     self.name = make_autoname(prefix, 8)
+    #     # if self.fields['stevedore']:
+    #     #     prefix = f"{self.stevedore}-.DD.-.MM.-.YYYY.-"
+    #     #     self.name = make_autoname(prefix, 8)
+    #     # if self.fields['kpt']:
+    #     #     prefix = f"{self.kpt}-.DD.-.MM.-.YYYY.-"
+    #     #     self.name = make_autoname(prefix, 8)
+    #
+    # def save(self, *args, **kwargs):
+    #     # ................................. AGENT BILL SAVING
+    #     agent_doc = frappe.new_doc('Bill Entry')
+    #
+    #     self.fields['ships_agent'] = self.ships_agent
+    #     self.fields['abbr_agent'] = self.abbr_agent
+    #     self.fields['ships_agent_name'] = self.ships_agent_name
+    #     # self.autoname()
+    #     print("----------------------i am in agent doc----------------------")
+    #     agent_doc.update(self.fields)
+    #     agent_doc.insert()
+    #     # ................................. STEVEDORE BILL SAVING
+    #     stevedore_doc = frappe.new_doc('Bill Entry')
+    #
+    #     self.fields['stevedore'] = self.stevedore
+    #     self.fields['abbr_stevedore'] = self.abbr_stevedore
+    #     self.fields['stevedore_name'] = self.stevedore_name
+    #
+    #     self.fields['ships_agent'] = None
+    #     self.fields['abbr_agent'] = None
+    #     self.fields['ships_agent_name'] = None
+    #     # self.autoname()
+    #     print("----------------------i am in stevedore doc----------------------")
+    #     stevedore_doc.update(self.fields)
+    #     stevedore_doc.insert()
+    #     # ................................. KPT BILL SAVING
+    #     kpt_doc = frappe.new_doc('Bill Entry')
+    #
+    #     self.fields['kpt'] = self.kpt
+    #     self.fields['abbr_kpt'] = self.abbr_kpt
+    #     self.fields['kpt_name'] = self.kpt_name
+    #
+    #     self.fields['stevedore'] = None
+    #     self.fields['abbr_stevedore'] = None
+    #     self.fields['stevedore_name'] = None
+    #     print("----------------------i am in kpt doc----------------------")
+    #     # self.autoname()
+    #     kpt_doc.update(self.fields)
+    #     kpt_doc.insert()
+>>>>>>> 41266be (invoices creation done)
 
 # .................................
 
