@@ -10,10 +10,7 @@
  "engine": "InnoDB",
  "field_order": [
   "year",
-<<<<<<< HEAD
   "rate_type",
-=======
->>>>>>> 41266be (invoices creation done)
   "tc_no",
   "ships_agent",
   "amended_from",
@@ -21,7 +18,6 @@
   "kpt",
   "vessel_code",
   "berth",
-<<<<<<< HEAD
   "column_break_niz2",
   "arrival_date",
   "sail_on_date",
