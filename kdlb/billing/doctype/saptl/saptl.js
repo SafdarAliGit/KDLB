@@ -101,11 +101,8 @@ frappe.ui.form.on('Saptl', {
         frm.set_query('customer', function (doc, cdt, cdn) {
             return {
                 filters: [
-<<<<<<< HEAD
+
                     ["Customer", "customer_group", "in", ["SAPTL"]]
-=======
-                    ["Customer", "customer_role", "in", ["KPT"]]
->>>>>>> 41266be (invoices creation done)
                 ]
             };
         });
