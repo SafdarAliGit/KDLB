@@ -18,20 +18,21 @@
   "kpt",
   "vessel_code",
   "berth",
+  "column_break_vdom4",
   "arrival_date",
   "sail_on_date",
   "nature_of_cargo",
-  "multiple_agents",
-  "column_break_niz2",
-  "bill_no",
-  "surcharge",
-  "ships_agent_name",
-  "stevedore_name",
-  "kpt_name",
-  "vessel_name",
   "due_date",
   "import_teus",
   "export_teus",
+  "posting_date",
+  "column_break_niz2",
+  "ships_agent_name",
+  "stevedore_name",
+  "kpt_name",
+  "surcharge",
+  "bill_no",
+  "vessel_name",
   "amount",
   "amount_after_surcharge",
   "cargo_name",
@@ -42,11 +43,15 @@
   "abbr_agent",
   "abbr_stevedore",
   "abbr_kpt",
-  "posting_date",
   "uom",
   "section_break_pelc",
+  "multiple_agents",
   "vessel_final_report_items",
-  "company"
+  "company",
+  "agent_invoice_created",
+  "stevedore_invoice_created",
+  "kpt_invoice_created",
+  "multi_agent_invoice_created"
  ],
  "fields": [
   {
@@ -157,11 +162,11 @@
    "read_only": 1
   },
   {
-   "default": "1",
-   "fetch_from": "surcharge_rate.surcharge_rate",
+   "default": "0",
    "fieldname": "surcharge",
    "fieldtype": "Float",
-   "label": "Surcharge"
+   "label": "Surcharge",
+   "read_only": 1
   },
   {
    "default": "2",
@@ -364,16 +369,16 @@
    "read_only": 1
   },
   {
-   "fieldname": "column_break_2zcnf",
-   "fieldtype": "Column Break"
-  },
-  {
    "columns": 3,
    "default": "NR",
    "fieldname": "rate_type",
    "fieldtype": "Select",
    "label": "Rate Type",
    "options": "NR\nSR"
+  },
+  {
+   "fieldname": "column_break_vdom4",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -392,7 +397,7 @@
    "link_fieldname": "bill_no"
   }
  ],
- "modified": "2023-05-21 19:48:25.472050",
+ "modified": "2023-07-23 19:15:48.091358",
  "modified_by": "Administrator",
  "module": "Billing",
  "name": "Vessel Final Report",
