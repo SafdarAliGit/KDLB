@@ -250,6 +250,7 @@ def submit_kpt_invoice(source_name):
             si.tc_no = source_name.tc_no
             si.vessel_code = source_name.vessel_code
             si.vessel_name = source_name.vessel_name
+            si.berth = source_name.berth
             si.arrival_date = source_name.arrival_date
             si.sail_on_date = source_name.sail_on_date
             si.nature_of_cargo = source_name.nature_of_cargo
