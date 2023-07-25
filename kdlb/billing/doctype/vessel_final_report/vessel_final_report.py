@@ -253,6 +253,7 @@ def submit_kpt_invoice(source_name):
             si.arrival_date = source_name.arrival_date
             si.sail_on_date = source_name.sail_on_date
             si.nature_of_cargo = source_name.nature_of_cargo
+            si.cargo_name = source_name.cargo_name
             si.item_group = source_name.item_group
             si.rate_type = source_name.rate_type
             si.import_teus = source_name.import_teus
