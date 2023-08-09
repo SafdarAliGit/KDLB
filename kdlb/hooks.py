@@ -19,6 +19,7 @@ override_doctype_class = {
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/kdlb/css/kdlb.css"
+app_include_css = "/assets/kdlb/css/kdlb.css"
 # app_include_js = "/assets/kdlb/js/kdlb.js"
 
 # include js, css files in header of web template
