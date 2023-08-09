@@ -1,5 +1,4 @@
 {
-
  "custom_fields": [
   {
    "_assign": null,
@@ -302,8 +301,6 @@
    "width": null
   }
  ],
-
- "custom_fields": [],
  "custom_perms": [],
  "doctype": "Sales Invoice Item",
  "links": [],
