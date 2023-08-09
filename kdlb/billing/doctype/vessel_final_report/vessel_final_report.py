@@ -41,7 +41,6 @@ def submit_agent_invoice(source_name):
                     si.posting_date = source_name.posting_date
                     si.due_date = source_name.due_date
                     si.customer = item.ships_agent
-                    si.stevedore_name = item.stevedore_name
                     si.bill_no = source_name.bill_no
                     si.tc_no = source_name.tc_no
                     si.vessel_code = source_name.vessel_code
@@ -108,6 +107,7 @@ def submit_agent_invoice(source_name):
                 si.posting_date = source_name.posting_date
                 si.due_date = source_name.due_date
                 si.customer = source_name.ships_agent
+                si.stevedore_name = source_name.stevedore_name
                 si.bill_no = source_name.bill_no
                 si.tc_no = source_name.tc_no
                 si.vessel_code = source_name.vessel_code
