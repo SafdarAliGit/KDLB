@@ -248,6 +248,8 @@ def submit_kpt_invoice(source_name):
             si.posting_date = source_name.posting_date
             si.due_date = source_name.due_date
             si.customer = source_name.kpt
+            si.stevedore_name = source_name.stevedore_name
+            si.ships_agent_name = source_name.ships_agent_name
             si.bill_no = source_name.bill_no
             si.tc_no = source_name.tc_no
             si.vessel_code = source_name.vessel_code
