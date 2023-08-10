@@ -56,6 +56,12 @@ def get_cargo_rate(**args):
 
 
 
+@frappe.whitelist()
+def get_vessel_description(vessel_name):
+    vessel = frappe.get_value("Vessel", {"name": vessel_name}, "vessel_description")
+    return vessel
+
+
 
 
 

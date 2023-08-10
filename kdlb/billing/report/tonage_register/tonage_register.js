@@ -1,4 +1,5 @@
-frappe.query_reports["Party Wise Details Outstanding"] = {
+
+frappe.query_reports["Tonage Register"] = {
     "filters": [
         {
             "fieldname": "from_date",
@@ -40,6 +41,12 @@ frappe.query_reports["Party Wise Details Outstanding"] = {
             "label": __("Vessel"),
             "fieldtype": "Link",
             "options": 'Vessel'
+        },
+		{
+            "fieldname": "item_group",
+            "label": __("Item Group"),
+            "fieldtype": "Link",
+            "options": 'Item Group'
         }
     ],
 
