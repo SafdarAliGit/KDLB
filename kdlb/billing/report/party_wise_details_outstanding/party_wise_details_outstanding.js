@@ -25,7 +25,7 @@ frappe.query_reports["Party Wise Details Outstanding"] = {
         },
         {
             "fieldname": "customer",
-            "label": __("Customer"),
+            "label": __("Customer Code"),
             "fieldtype": "Link",
             "options": "Customer",
             "get_query": function () {
@@ -33,13 +33,46 @@ frappe.query_reports["Party Wise Details Outstanding"] = {
                 return {
                     filters: {"customer_group": customer_group}
                 };
+            },
+            on_change: () => {
+                var customer = frappe.query_report.get_filter_value('customer');
+                if (customer) {
+                    frappe.db.get_value('Customer', customer, ["customer_name"], function (value) {
+                        frappe.query_report.set_filter_value('customer_name', value["customer_name"]);
+                    });
+                } else {
+                    frappe.query_report.set_filter_value('customer_name', "");
+                }
             }
         },
         {
+            "fieldname": "customer_name",
+            "label": __("Customer Name"),
+            "fieldtype": "Data",
+            "hidden": 0,
+
+        },
+        {
             "fieldname": "vessel_code",
-            "label": __("Vessel"),
+            "label": __("Vessel Code"),
             "fieldtype": "Link",
-            "options": 'Vessel'
+            "options": 'Vessel',
+            on_change: () => {
+                var vessel_code = frappe.query_report.get_filter_value('vessel_code');
+                if (vessel_code) {
+                    frappe.db.get_value('Vessel', vessel_code, ["vessel_description"], function (value) {
+                        frappe.query_report.set_filter_value('vessel_name', value["vessel_description"]);
+                    });
+                } else {
+                    frappe.query_report.set_filter_value('vessel_name', "");
+                }
+            }
+        },
+        {
+            "fieldname": "vessel_name",
+            "label": __("Vessel Name"),
+            "fieldtype": "Data",
+            "hidden": 0
         }
     ],
 
