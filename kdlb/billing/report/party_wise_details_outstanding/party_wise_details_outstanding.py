@@ -39,7 +39,7 @@ def get_columns():
         },
         {
             "label": _("Total Amount"),
-            "fieldname": "grand_total",
+            "fieldname": "rounded_total",
             "fieldtype": "Currency",
             "width": 120
         },
@@ -85,9 +85,9 @@ def get_data(filters):
                 `tabSales Invoice`.posting_date,
                 `tabSales Invoice`.vessel_name,
                 `tabSales Invoice`.arrival_date,
-                `tabSales Invoice`.grand_total as grand_total,
+                `tabSales Invoice`.rounded_total as rounded_total,
                 `tabSales Invoice`.outstanding_amount as outstanding_amount,
-                 grand_total - outstanding_amount as paid_amount
+                 rounded_total - outstanding_amount as paid_amount
             FROM 
                 `tabSales Invoice`
             WHERE 
