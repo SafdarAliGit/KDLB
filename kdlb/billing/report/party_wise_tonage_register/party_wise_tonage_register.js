@@ -1,5 +1,5 @@
 
-frappe.query_reports["Tonage Register"] = {
+frappe.query_reports["Party Wise Tonage Register"] = {
     "filters": [
         {
             "fieldname": "from_date",
