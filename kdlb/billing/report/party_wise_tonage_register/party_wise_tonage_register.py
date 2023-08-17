@@ -20,7 +20,7 @@ def decimal_format(value, decimals):
 def get_columns():
     columns = [
         {
-            "label": _("Invoice No"),
+            "label": _("Bill No"),
             "fieldname": "invoice_no",
             "fieldtype": "Link",
             "options": "Sales Invoice",

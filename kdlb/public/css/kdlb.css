@@ -74,6 +74,7 @@ span.search-icon {
 
 
 /* Styles for the active tab */
+
 .form-tabs .nav-item .nav-link.active {
     color: #fff; /* Set the text color for active tab */
     background-color: #dcd8d8; /* Lighten the background color for active tab */
@@ -103,3 +104,10 @@ span.search-icon {
   background-color: gainsboro;
 }
 /*second menu bar*/
+/*for select*/
+form-control, .form-control:not([type="checkbox"]):not([type="radio"]), select {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 4px !important;
+  background-color: #FFFFFF;
+}

@@ -20,6 +20,12 @@ def decimal_format(value, decimals):
 def get_columns():
     columns = [
         {
+            "label": _("Bill No"),
+            "fieldname": "invoice_number",
+            "fieldtype": "Link",
+            "options": "Sales Invoice",
+            "width": 100
+        },{
             "label": _("Bill Date"),
             "fieldname": "posting_date",
             "fieldtype": "Date",
@@ -80,7 +86,7 @@ def get_data(filters):
     data = []
     si_query = """
             SELECT 
-                `tabSales Invoice`.name AS invoice_name,
+                `tabSales Invoice`.name AS invoice_number,
                 `tabSales Invoice`.vessel_code,
                 `tabSales Invoice`.posting_date,
                 `tabSales Invoice`.vessel_name,

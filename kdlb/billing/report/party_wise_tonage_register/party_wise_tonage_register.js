@@ -20,7 +20,7 @@ frappe.query_reports["Party Wise Tonage Register"] = {
         },
         {
             "fieldname": "customer_group",
-            "label": __("Customer Group"),
+            "label": __("Party Group"),
             "fieldtype": "Link",
             "options": "Customer Group",
             "get_query": function () {
@@ -31,7 +31,7 @@ frappe.query_reports["Party Wise Tonage Register"] = {
         },
         {
             "fieldname": "customer",
-            "label": __("Customer Code"),
+            "label": __("Party Code"),
             "fieldtype": "Link",
             "options": "Customer",
             "get_query": function () {
@@ -53,7 +53,7 @@ frappe.query_reports["Party Wise Tonage Register"] = {
         },
         {
             "fieldname": "customer_name",
-            "label": __("Customer Name"),
+            "label": __("Party Name"),
             "fieldtype": "Data",
              "hidden": 0,
 
