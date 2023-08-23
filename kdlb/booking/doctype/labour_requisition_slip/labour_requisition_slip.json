@@ -1,0 +1,310 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:LRS-{YY}-{#####}",
+ "creation": "2023-08-23 20:06:32.319406",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "requisition_no",
+  "column_break_kcgpt",
+  "requisition_date",
+  "column_break_5hvyq",
+  "requisition_status",
+  "section_break_cwcko",
+  "stevedore",
+  "shiping_agent",
+  "vessel",
+  "column_break_nwefu",
+  "nature_of_cargo",
+  "cargo_name",
+  "voyage_no",
+  "column_break_wgbyv",
+  "berth",
+  "shift",
+  "column_break_fp23p",
+  "stevedore_name",
+  "shiping_agent_name",
+  "vessel_name",
+  "section_break_3afqv",
+  "site",
+  "no_of_workers",
+  "column_break_a1myb",
+  "no_of_tindal",
+  "no_of_carier",
+  "column_break_yatch",
+  "no_of_serang",
+  "no_of_winchman",
+  "column_break_yqxrx",
+  "no_of_keyman",
+  "total_workers",
+  "section_break_je6nq",
+  "column_break_yarid",
+  "remarks",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "default": "None",
+   "fieldname": "requisition_no",
+   "fieldtype": "Data",
+   "label": "Requisition No",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_kcgpt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "requisition_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Requisition Date"
+  },
+  {
+   "fieldname": "column_break_5hvyq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Confirmed",
+   "fieldname": "requisition_status",
+   "fieldtype": "Select",
+   "label": "Requisition Status",
+   "options": "Confirmed\nProvisional"
+  },
+  {
+   "fieldname": "section_break_cwcko",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "stevedore",
+   "fieldtype": "Link",
+   "label": "Stevedore",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "shiping_agent",
+   "fieldtype": "Link",
+   "label": "Shiping Agent",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "vessel",
+   "fieldtype": "Link",
+   "label": "Vessel",
+   "options": "Vessel"
+  },
+  {
+   "fieldname": "column_break_nwefu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "nature_of_cargo",
+   "fieldtype": "Link",
+   "label": "Nature Of Cargo",
+   "options": "Item"
+  },
+  {
+   "default": "None",
+   "fetch_from": "nature_of_cargo.item_name",
+   "fieldname": "cargo_name",
+   "fieldtype": "Data",
+   "label": "Cargo Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "voyage_no",
+   "fieldtype": "Data",
+   "label": "Voyage No"
+  },
+  {
+   "fieldname": "column_break_wgbyv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "berth",
+   "fieldtype": "Link",
+   "label": "Berth",
+   "options": "Berth"
+  },
+  {
+   "fieldname": "shift",
+   "fieldtype": "Link",
+   "label": "Shift",
+   "options": "Shift Type"
+  },
+  {
+   "fieldname": "column_break_fp23p",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "None",
+   "fetch_from": "stevedore.customer_name",
+   "fieldname": "stevedore_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Stevedore Name",
+   "read_only": 1
+  },
+  {
+   "default": "None",
+   "fetch_from": "shiping_agent.customer_name",
+   "fieldname": "shiping_agent_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Shiping Agent Name",
+   "read_only": 1
+  },
+  {
+   "default": "None",
+   "fetch_from": "vessel.vessel_description",
+   "fieldname": "vessel_name",
+   "fieldtype": "Data",
+   "label": "Vessel Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_3afqv",
+   "fieldtype": "Section Break",
+   "label": "No Of Gangs Required"
+  },
+  {
+   "fieldname": "site",
+   "fieldtype": "Select",
+   "label": "Site",
+   "options": "\nHatch\nWharf"
+  },
+  {
+   "default": "0",
+   "fieldname": "no_of_workers",
+   "fieldtype": "Int",
+   "label": "No Of Workers"
+  },
+  {
+   "fieldname": "column_break_a1myb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "no_of_tindal",
+   "fieldtype": "Int",
+   "label": "No Of Tindal"
+  },
+  {
+   "default": "0",
+   "fieldname": "no_of_carier",
+   "fieldtype": "Int",
+   "label": "No Of Carier"
+  },
+  {
+   "fieldname": "column_break_yatch",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "no_of_serang",
+   "fieldtype": "Int",
+   "label": "No Of Serang"
+  },
+  {
+   "default": "0",
+   "fieldname": "no_of_winchman",
+   "fieldtype": "Int",
+   "label": "No Of Winchman"
+  },
+  {
+   "fieldname": "column_break_yqxrx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "no_of_keyman",
+   "fieldtype": "Int",
+   "label": "No Of Keyman "
+  },
+  {
+   "default": "0",
+   "fieldname": "total_workers",
+   "fieldtype": "Int",
+   "label": "Total Workers",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_je6nq",
+   "fieldtype": "Section Break",
+   "label": " "
+  },
+  {
+   "fieldname": "column_break_yarid",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Labour Requisition Slip",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-08-23 22:52:22.129893",
+ "modified_by": "Administrator",
+ "module": "booking",
+ "name": "Labour Requisition Slip",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
