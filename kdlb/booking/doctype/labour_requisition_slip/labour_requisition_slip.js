@@ -2,7 +2,7 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Labour Requisition Slip', {
-       setup: function (frm) {
+    setup: function (frm) {
 
         frm.set_query("shiping_agent", function () {
             return {
@@ -33,22 +33,52 @@ frappe.ui.form.on('Labour Requisition Slip', {
         frm.set_value("requisition_no", frm.doc.name);
     },
 
-    no_of_workers:function (frm){
-        frm.set_value('total_workers', frm.doc.no_of_workers + frm.doc.no_of_tindal + frm.doc.no_of_carier + frm.doc.no_of_serang + frm.doc.no_of_winchman + frm.doc.no_of_keyman);
-    },
-    no_of_tindal:function (frm){
-        frm.set_value('total_workers', frm.doc.no_of_workers + frm.doc.no_of_tindal + frm.doc.no_of_carier + frm.doc.no_of_serang + frm.doc.no_of_winchman + frm.doc.no_of_keyman);
-    },
-    no_of_carier:function (frm){
-        frm.set_value('total_workers', frm.doc.no_of_workers + frm.doc.no_of_tindal + frm.doc.no_of_carier + frm.doc.no_of_serang + frm.doc.no_of_winchman + frm.doc.no_of_keyman);
-    },
-    no_of_serang:function (frm){
-        frm.set_value('total_workers', frm.doc.no_of_workers + frm.doc.no_of_tindal + frm.doc.no_of_carier + frm.doc.no_of_serang + frm.doc.no_of_winchman + frm.doc.no_of_keyman);
-    },
-    no_of_winchman:function (frm){
-        frm.set_value('total_workers', frm.doc.no_of_workers + frm.doc.no_of_tindal + frm.doc.no_of_carier + frm.doc.no_of_serang + frm.doc.no_of_winchman + frm.doc.no_of_keyman);
-    },
-    no_of_keyman:function (frm){
-        frm.set_value('total_workers', frm.doc.no_of_workers + frm.doc.no_of_tindal + frm.doc.no_of_carier + frm.doc.no_of_serang + frm.doc.no_of_winchman + frm.doc.no_of_keyman);
-    }
 });
+
+frappe.ui.form.on('Labour Requisition Slip Item', {
+
+    workers: function (frm, cdt, cdn) {
+        var total_workers = 0;
+        var d = locals[cdt][cdn];
+        total_workers = d.workers + d.tindal + d.carier + d.serang + d.winchman + d.keyman;
+        frappe.model.set_value(cdt, cdn,'total_workers',d.gangs * total_workers);
+    },
+    tindal: function (frm, cdt, cdn) {
+        var total_workers = 0;
+        var d = locals[cdt][cdn];
+        total_workers = d.workers + d.tindal + d.carier + d.serang + d.winchman + d.keyman;
+        frappe.model.set_value(cdt, cdn,'total_workers', d.gangs * total_workers);
+    },
+    carier: function (frm, cdt, cdn) {
+        var total_workers = 0;
+        var d = locals[cdt][cdn];
+        total_workers = d.workers + d.tindal + d.carier + d.serang + d.winchman + d.keyman;
+        frappe.model.set_value(cdt, cdn,'total_workers',  d.gangs * total_workers);
+    },
+    serang: function (frm, cdt, cdn) {
+        var total_workers = 0;
+        var d = locals[cdt][cdn];
+        total_workers = d.workers + d.tindal + d.carier + d.serang + d.winchman + d.keyman;
+        frappe.model.set_value(cdt, cdn,'total_workers',  d.gangs * total_workers);
+    },
+    winchman: function (frm, cdt, cdn) {
+        var total_workers = 0;
+        var d = locals[cdt][cdn];
+        total_workers = d.workers + d.tindal + d.carier + d.serang + d.winchman + d.keyman;
+        frappe.model.set_value(cdt, cdn,'total_workers',  d.gangs * total_workers);
+    },
+    keyman: function (frm, cdt, cdn) {
+        var total_workers = 0;
+        var d = locals[cdt][cdn];
+        total_workers = d.workers + d.tindal + d.carier + d.serang + d.winchman + d.keyman;
+        frappe.model.set_value(cdt, cdn,'total_workers',  d.gangs * total_workers);
+    },
+    gangs: function (frm, cdt, cdn) {
+        var total_workers = 0;
+        var d = locals[cdt][cdn];
+        total_workers = d.workers + d.tindal + d.carier + d.serang + d.winchman + d.keyman;
+        frappe.model.set_value(cdt, cdn,'total_workers',  d.gangs * total_workers);
+    }
+
+});
+

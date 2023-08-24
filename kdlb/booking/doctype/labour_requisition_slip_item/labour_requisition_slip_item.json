@@ -1,0 +1,96 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-08-24 22:49:16.260256",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "site",
+  "workers",
+  "tindal",
+  "carier",
+  "serang",
+  "winchman",
+  "keyman",
+  "gangs",
+  "total_workers"
+ ],
+ "fields": [
+  {
+   "fieldname": "site",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Site",
+   "options": "\nHatch\nWharf"
+  },
+  {
+   "default": "0",
+   "fieldname": "workers",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Workers"
+  },
+  {
+   "default": "0",
+   "fieldname": "tindal",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Tindal"
+  },
+  {
+   "default": "0",
+   "fieldname": "carier",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Carier"
+  },
+  {
+   "default": "0",
+   "fieldname": "serang",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Serang"
+  },
+  {
+   "default": "0",
+   "fieldname": "winchman",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Winchman"
+  },
+  {
+   "default": "0",
+   "fieldname": "keyman",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Keyman"
+  },
+  {
+   "default": "1",
+   "fieldname": "gangs",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Gangs"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_workers",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Total Workers"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-08-24 23:31:55.487582",
+ "modified_by": "Administrator",
+ "module": "booking",
+ "name": "Labour Requisition Slip Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

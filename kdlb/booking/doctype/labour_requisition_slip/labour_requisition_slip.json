@@ -28,20 +28,10 @@
   "stevedore_name",
   "shiping_agent_name",
   "vessel_name",
+  "section_break_ikul5",
+  "gangs",
   "section_break_3afqv",
-  "site",
-  "no_of_workers",
-  "column_break_a1myb",
-  "no_of_tindal",
-  "no_of_carier",
-  "column_break_yatch",
-  "no_of_serang",
-  "no_of_winchman",
-  "column_break_yqxrx",
-  "no_of_keyman",
-  "total_workers",
-  "section_break_je6nq",
-  "column_break_yarid",
+  "section_break_v0eom",
   "remarks",
   "amended_from"
  ],
@@ -168,78 +158,8 @@
   },
   {
    "fieldname": "section_break_3afqv",
-   "fieldtype": "Section Break",
-   "label": "No Of Gangs Required"
-  },
-  {
-   "fieldname": "site",
-   "fieldtype": "Select",
-   "label": "Site",
-   "options": "\nHatch\nWharf"
-  },
-  {
-   "default": "0",
-   "fieldname": "no_of_workers",
-   "fieldtype": "Int",
-   "label": "No Of Workers"
-  },
-  {
-   "fieldname": "column_break_a1myb",
-   "fieldtype": "Column Break"
-  },
-  {
-   "default": "0",
-   "fieldname": "no_of_tindal",
-   "fieldtype": "Int",
-   "label": "No Of Tindal"
-  },
-  {
-   "default": "0",
-   "fieldname": "no_of_carier",
-   "fieldtype": "Int",
-   "label": "No Of Carier"
-  },
-  {
-   "fieldname": "column_break_yatch",
-   "fieldtype": "Column Break"
-  },
-  {
-   "default": "0",
-   "fieldname": "no_of_serang",
-   "fieldtype": "Int",
-   "label": "No Of Serang"
-  },
-  {
-   "default": "0",
-   "fieldname": "no_of_winchman",
-   "fieldtype": "Int",
-   "label": "No Of Winchman"
-  },
-  {
-   "fieldname": "column_break_yqxrx",
-   "fieldtype": "Column Break"
-  },
-  {
-   "default": "0",
-   "fieldname": "no_of_keyman",
-   "fieldtype": "Int",
-   "label": "No Of Keyman "
-  },
-  {
-   "default": "0",
-   "fieldname": "total_workers",
-   "fieldtype": "Int",
-   "label": "Total Workers",
-   "read_only": 1
-  },
-  {
-   "fieldname": "section_break_je6nq",
-   "fieldtype": "Section Break",
-   "label": " "
-  },
-  {
-   "fieldname": "column_break_yarid",
-   "fieldtype": "Column Break"
+   "fieldtype": "Fold",
+   "label": "Remarks"
   },
   {
    "fieldname": "remarks",
@@ -254,12 +174,26 @@
    "options": "Labour Requisition Slip",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "gangs",
+   "fieldtype": "Table",
+   "label": "No Of Gangs Required",
+   "options": "Labour Requisition Slip Item"
+  },
+  {
+   "fieldname": "section_break_ikul5",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_v0eom",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-08-23 22:52:22.129893",
+ "modified": "2023-08-24 23:06:09.715636",
  "modified_by": "Administrator",
  "module": "booking",
  "name": "Labour Requisition Slip",
