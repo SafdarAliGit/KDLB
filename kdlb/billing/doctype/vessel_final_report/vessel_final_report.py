@@ -54,6 +54,23 @@ def submit_agent_invoice(source_name):
                     si.rate_type = source_name.rate_type
                     si.import_teus = item.import_teus__tons
                     si.export_teus = item.export_teus__tons
+                    qty = item.import_teus__tons + item.export_teus__tons
+                    if source_name.rate_type == 'NR':
+                        normal_rate = rate_dict["normal_rate"]
+                        amount = qty * normal_rate
+                        surcharge = amount * (source_name.surcharge / 100)
+                        amount_after_surcharge = amount + surcharge
+                        si.surcharge_rate = source_name.surcharge
+                        si.surcharge = surcharge
+                        si.amount_after_surcharge = amount_after_surcharge
+                    else:
+                        special_rate = rate_dict["special_rate"]
+                        amount = qty * special_rate
+                        surcharge = amount * (source_name.surcharge / 100)
+                        amount_after_surcharge = amount + surcharge
+                        si.surcharge_rate = source_name.surcharge
+                        si.surcharge = surcharge
+                        si.amount_after_surcharge = amount_after_surcharge
 
                     it = si.append("items", {})
                     it.import_teus = item.import_teus__tons
@@ -121,6 +138,23 @@ def submit_agent_invoice(source_name):
                 si.rate_type = source_name.rate_type
                 si.import_teus = source_name.import_teus
                 si.export_teus = source_name.export_teus
+                qty = source_name.import_teus + source_name.export_teus
+                if source_name.rate_type == 'NR':
+                    normal_rate = rate_dict["normal_rate"]
+                    amount = qty * normal_rate
+                    surcharge = amount * (source_name.surcharge / 100)
+                    amount_after_surcharge = amount + surcharge
+                    si.surcharge_rate = source_name.surcharge
+                    si.surcharge = surcharge
+                    si.amount_after_surcharge = amount_after_surcharge
+                else:
+                    special_rate = rate_dict["special_rate"]
+                    amount = qty * special_rate
+                    surcharge = amount * (source_name.surcharge / 100)
+                    amount_after_surcharge = amount + surcharge
+                    si.surcharge_rate = source_name.surcharge
+                    si.surcharge = surcharge
+                    si.amount_after_surcharge = amount_after_surcharge
 
 
                 it = si.append("items", {})
@@ -192,6 +226,23 @@ def submit_stevedore_invoice(source_name):
             si.rate_type = source_name.rate_type
             si.import_teus = source_name.import_teus
             si.export_teus = source_name.export_teus
+            qty = source_name.import_teus + source_name.export_teus
+            if source_name.rate_type == 'NR':
+                normal_rate = rate_dict["normal_rate"]
+                amount = qty * normal_rate
+                surcharge = amount * (source_name.surcharge / 100)
+                amount_after_surcharge = amount + surcharge
+                si.surcharge_rate = source_name.surcharge
+                si.surcharge = surcharge
+                si.amount_after_surcharge = amount_after_surcharge
+            else:
+                special_rate = rate_dict["special_rate"]
+                amount = qty * special_rate
+                surcharge = amount * (source_name.surcharge / 100)
+                amount_after_surcharge = amount + surcharge
+                si.surcharge_rate = source_name.surcharge
+                si.surcharge = surcharge
+                si.amount_after_surcharge = amount_after_surcharge
 
             it = si.append("items", {})
             it.import_teus = source_name.import_teus
@@ -263,6 +314,24 @@ def submit_kpt_invoice(source_name):
             si.rate_type = source_name.rate_type
             si.import_teus = source_name.import_teus
             si.export_teus = source_name.export_teus
+            qty = source_name.import_teus + source_name.export_teus
+            if source_name.rate_type == 'NR':
+                normal_rate = rate_dict["normal_rate"]
+                amount = qty * normal_rate
+                surcharge = amount * (source_name.surcharge / 100)
+                amount_after_surcharge = amount + surcharge
+                si.surcharge_rate = source_name.surcharge
+                si.surcharge = surcharge
+                si.amount_after_surcharge = amount_after_surcharge
+            else:
+                special_rate = rate_dict["special_rate"]
+                amount = qty * special_rate
+                surcharge = amount * (source_name.surcharge / 100)
+                amount_after_surcharge = amount + surcharge
+                si.surcharge_rate = source_name.surcharge
+                si.surcharge = surcharge
+                si.amount_after_surcharge = amount_after_surcharge
+
 
             it = si.append("items", {})
             it.import_teus = source_name.import_teus
