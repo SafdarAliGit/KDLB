@@ -1,0 +1,133 @@
+<h2 class="text-center">{%= __("KDLB Aging Summary") %}</h2>
+
+<div class="text-center">
+	{% if (filters.report_date) { %}
+    <div class="text-center" style="display: inline-block;">
+        <b>Posting Date:</b> {%= filters.report_date %}
+    </div>
+	{% } %}
+	{% if (filters.range1) { %}
+    <div class="text-center" style="display: inline-block; margin-right: 5px;">
+        <b>Range 1:</b> {%= filters.range1 %}
+    </div>
+	{% } %}
+	{% if (filters.range2) { %}
+    <div class="text-center" style="display: inline-block; margin-right: 5px;">
+        <b>Range 2:</b>{%= filters.range2 %}
+    </div>
+	{% } %}
+	{% if (filters.range3) { %}
+    <div class="text-center" style="display: inline-block; margin-right: 5px;">
+        <b>Range 3: </b>{%= filters.range3 %}
+    </div>
+	{% } %}
+	{% if (filters.range4) { %}
+    <div class="text-center" style="display: inline-block; margin-right: 5px;">
+        <b>Range 4: </b>{%= filters.range4 %}
+    </div>
+	{% } %}
+	{% if (filters.customer) { %}
+    <div class="text-center" style="display: inline-block; margin-right: 5px;">
+        <b>Range 5: </b>{%= filters.customer %}
+    </div>
+	{% } %}
+	{% if (filters.customer_group) { %}
+    <div class="text-center" style="display: inline-block; margin-right: 5px;">
+        <b>Customer Group: </b>{%= filters.customer_group %}
+    </div>
+	{% } %}
+</div>
+
+
+{% var customer_group_summary = {} %}
+{% for(var i=0, l=data.length; i<l; i++) { %}
+	{% var customer_group = data[i].customer_group %}
+
+	{% if (customer_group) { %}
+		{% if (!customer_group_summary[customer_group]) { %}
+		{% customer_group_summary[customer_group] = {
+			'customer_group': customer_group, 'invoiced': 0, 'outstanding': 0, 
+			'paid': 0, 'surcharge': 0, 'amount_after_surcharge': 0,
+			'range1': 0, 'range2': 0, 'range3': 0, 'range4': 0, 'range5': 0, 
+		} %}
+		{% } %}
+	
+		{% customer_group_summary[customer_group].paid += data[i].paid %}
+		{% customer_group_summary[customer_group].invoiced += data[i].invoiced %}
+		{% customer_group_summary[customer_group].surcharge += data[i].surcharge %}
+		{% customer_group_summary[customer_group].outstanding += data[i].outstanding %}
+		{% customer_group_summary[customer_group].amount_after_surcharge += data[i].amount_after_surcharge %}
+
+		{% customer_group_summary[customer_group].range1 += data[i].range1 %}
+		{% customer_group_summary[customer_group].range2 += data[i].range2 %}
+		{% customer_group_summary[customer_group].range3 += data[i].range3 %}
+		{% customer_group_summary[customer_group].range4 += data[i].range4 %}
+		{% customer_group_summary[customer_group].range5 += data[i].range5 %}
+
+	{% } %}
+{% } %}
+
+{% if (!filters.customer_group ) { %}
+<h5>Party Group Summary: </h5>
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th style="width: 12%">{%= __("Party") %}</th>
+			<th style="width: 18%">{%= __("0 to ") %} {%= filters.range1 %}</th>
+			<th style="width: 18%">{%= filters.range1 %} {%= __(" to ") %} {%= filters.range2 %}</th>
+			<th style="width: 18%">{%= filters.range2 %} {%= __(" to ") %} {%= filters.range3 %}</th>
+			<th style="width: 18%">{%= filters.range3 %} {%= __(" to ") %} {%= filters.range4 %}</th>
+			<th style="width: 18%">{%= filters.range4 %} {%= __(" and above") %}</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for(const key in customer_group_summary) { %}
+			<tr>
+				<td>{%= customer_group_summary[key].customer_group %}</td>
+				<td>{%= format_currency(customer_group_summary[key].range1, 'PKR') %}</td>
+				<td>{%= format_currency(customer_group_summary[key].range2, 'PKR') %}</td>
+				<td>{%= format_currency(customer_group_summary[key].range3, 'PKR') %}</td>
+				<td>{%= format_currency(customer_group_summary[key].range4, 'PKR') %}</td>
+				<td>{%= format_currency(customer_group_summary[key].range5, 'PKR') %}</td>
+			</tr>
+		{% } %}
+	</tbody>
+</table>
+{% } %}
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th style="width: 12%">{%= __("Party") %}</th>
+			<th style="width: 15%">{%= __("Party Name") %}</th>
+			<th style="width: 15%">{%= __("Outstanding Amount") %}</th>
+			<th style="width: 18%">{%= __("0 to ") %} {%= filters.range1 %}</th>
+			<th style="width: 18%">{%= filters.range1 %} {%= __(" to ") %} {%= filters.range2 %}</th>
+			<th style="width: 18%">{%= filters.range2 %} {%= __(" to ") %} {%= filters.range3 %}</th>
+			<th style="width: 18%">{%= filters.range3 %} {%= __(" to ") %} {%= filters.range4 %}</th>
+			<th style="width: 18%">{%= filters.range4 %} {%= __(" and above") %}</th>
+			<th style="width: 25%">{%= __("Surcharge") %}</th>
+			<th style="width: 15%">{%= __("Amount After Surcharge") %}</th>
+			<th style="width: 15%">{%= __("Party Group") %}</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		{% for(var i=0, l=data.length; i<l; i++) { %}
+			<tr>
+				<td>{%= data[i].party %}</td>
+				<td>{%= data[i].customer_name %}</td>
+				<td>{%= format_currency(data[i].outstanding, data[i].currency) %}</td>
+				<td>{%= format_currency(data[i].range1, data[i].currency) %}</td>
+				<td>{%= format_currency(data[i].range2, data[i].currency) %}</td>
+				<td>{%= format_currency(data[i].range3, data[i].currency) %}</td>
+				<td>{%= format_currency(data[i].range4, data[i].currency) %}</td>
+				<td>{%= format_currency(data[i].range5, data[i].currency) %}</td>
+				<td>{%= format_currency(data[i].surcharge, data[i].currency) %}</td>
+				<td>{%= format_currency(data[i].amount_after_surcharge, 'data[i].currency') %}</td>
+				<td>{%= data[i].customer_group %}</td>
+			</tr>
+		{% } %}
+	</tbody>
+</table>
+<p class="text-right text-muted">Printed On {%= frappe.datetime.str_to_user(frappe.datetime.get_datetime_as_string()) %}</p>

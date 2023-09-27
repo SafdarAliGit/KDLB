@@ -98,7 +98,10 @@ class AccountsReceivableSummary(ReceivablePayableReport):
 		for d in self.data:
 			if self.surcharge_details.get(d.party):
 				d.surcharge = self.surcharge_details.get(d.party).get('surcharge')
+				d.customer_name = self.surcharge_details.get(d.party).get('customer_name')
 				d.amount_after_surcharge = self.surcharge_details.get(d.party).get('amount_after_surcharge')
+
+		self.data = sorted(self.data, key=lambda k: k["customer_group"])
 
 	def get_surcharge_details(self):
 		self.surcharge_details = {}
@@ -109,9 +112,9 @@ class AccountsReceivableSummary(ReceivablePayableReport):
 			surcharge_details = frappe.db.sql(
 				"""
 				select sum(surcharge) as surcharge, sum(amount_after_surcharge) as amount_after_surcharge, 
-				sum(outstanding_amount), customer
+				sum(outstanding_amount), customer, customer_name
 				from `tabSales Invoice`
-				where {date_field} <= %s and company = %s and docstatus = 1
+				where {date_field} <= %s and company = %s and docstatus = 1 and status in ('Unpaid', 'Overdue')
 				group by customer_name
 			""".format(date_field=date_field),
 				(self.filters.report_date, self.filters.company),
@@ -119,7 +122,7 @@ class AccountsReceivableSummary(ReceivablePayableReport):
 			)
 		
 		for d in surcharge_details:
-			self.surcharge_details[d.customer] = {'surcharge': d.surcharge, 'amount_after_surcharge': d.amount_after_surcharge}
+			self.surcharge_details[d.customer] = {'customer_name': d.customer_name, 'surcharge': d.surcharge, 'amount_after_surcharge': d.amount_after_surcharge}
 
 	def get_party_total(self, args):
 		self.party_total = frappe._dict()
@@ -173,6 +176,19 @@ class AccountsReceivableSummary(ReceivablePayableReport):
 		if self.filters.sales_partner:
 			self.party_total[row.party]["default_sales_partner"] = row.get("default_sales_partner")
 
+
+	def add_column(self, label, fieldname=None, fieldtype="Currency", options=None, width=120, hidden=False):
+		if not fieldname:
+			fieldname = scrub(label)
+		if fieldtype == "Currency":
+			options = "currency"
+		if fieldtype == "Date":
+			width = 90
+
+		self.columns.append(
+			dict(label=label, fieldname=fieldname, fieldtype=fieldtype, options=options, width=width, hidden=hidden)
+		)
+
 	def get_columns(self):
 		self.columns = []
 		self.add_column(
@@ -180,13 +196,14 @@ class AccountsReceivableSummary(ReceivablePayableReport):
 			fieldname="party_type",
 			fieldtype="Data",
 			width=100,
+			hidden=1
 		)
 		self.add_column(
 			label=_("Party"),
 			fieldname="party",
 			fieldtype="Dynamic Link",
 			options="party_type",
-			width=180,
+			width=100,
 		)
 
 		if self.party_naming_by == "Naming Series":
@@ -195,13 +212,14 @@ class AccountsReceivableSummary(ReceivablePayableReport):
 				fieldname="party_name",
 				fieldtype="Data",
 			)
+		self.add_column(_("Party Name"), fieldname="customer_name", fieldtype="Data",  width=180)
 
 		credit_debit_label = "Credit Note" if self.account_type == "Receivable" else "Debit Note"
 
-		self.add_column(_("Advance Amount"), fieldname="advance")
+		self.add_column(_("Advance Amount"), fieldname="advance", hidden=1)
 		self.add_column(_("Invoiced Amount"), fieldname="invoiced")
 		self.add_column(_("Paid Amount"), fieldname="paid")
-		self.add_column(_(credit_debit_label), fieldname="credit_note")
+		self.add_column(_(credit_debit_label), fieldname="credit_note", hidden=1)
 		self.add_column(_("Outstanding Amount"), fieldname="outstanding")
 
 		if self.filters.show_gl_balance:
@@ -216,7 +234,7 @@ class AccountsReceivableSummary(ReceivablePayableReport):
 
 		if self.account_type == "Receivable":
 			self.add_column(
-				label=_("Territory"), fieldname="territory", fieldtype="Link", options="Territory"
+				label=_("Territory"), fieldname="territory", fieldtype="Link", options="Territory", hidden=1
 			)
 			self.add_column(
 				label=_("Customer Group"),
@@ -239,7 +257,7 @@ class AccountsReceivableSummary(ReceivablePayableReport):
 			)
 
 		self.add_column(
-			label=_("Currency"), fieldname="currency", fieldtype="Link", options="Currency", width=80
+			label=_("Currency"), fieldname="currency", fieldtype="Link", options="Currency", width=80, hidden=1
 		)
 
 	def setup_ageing_columns(self):

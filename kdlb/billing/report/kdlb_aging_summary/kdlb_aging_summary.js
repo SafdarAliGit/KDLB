@@ -9,7 +9,8 @@ frappe.query_reports["KDLB Aging Summary"] = {
 			"label": __("Company"),
 			"fieldtype": "Link",
 			"options": "Company",
-			"default": frappe.defaults.get_user_default("Company")
+			"default": frappe.defaults.get_user_default("Company"),
+			"hidden": 1
 		},
 		{
 			"fieldname":"report_date",
@@ -21,8 +22,9 @@ frappe.query_reports["KDLB Aging Summary"] = {
 			"fieldname":"ageing_based_on",
 			"label": __("Ageing Based On"),
 			"fieldtype": "Select",
-			"options": 'Posting Date\nDue Date',
-			"default": "Due Date"
+			// "options": 'Posting Date\nDue Date',
+			"options": 'Posting Date',
+			"default": "Posting Date"
 		},
 		{
 			"fieldname":"range1",
@@ -35,34 +37,36 @@ frappe.query_reports["KDLB Aging Summary"] = {
 			"fieldname":"range2",
 			"label": __("Ageing Range 2"),
 			"fieldtype": "Int",
-			"default": "60",
+			"default": "45",
 			"reqd": 1
 		},
 		{
 			"fieldname":"range3",
 			"label": __("Ageing Range 3"),
 			"fieldtype": "Int",
-			"default": "90",
+			"default": "60",
 			"reqd": 1
 		},
 		{
 			"fieldname":"range4",
 			"label": __("Ageing Range 4"),
 			"fieldtype": "Int",
-			"default": "120",
+			"default": "61",
 			"reqd": 1
 		},
 		{
 			"fieldname":"finance_book",
 			"label": __("Finance Book"),
 			"fieldtype": "Link",
-			"options": "Finance Book"
+			"options": "Finance Book",
+			"hidden": 1
 		},
 		{
 			"fieldname":"cost_center",
 			"label": __("Cost Center"),
 			"fieldtype": "Link",
 			"options": "Cost Center",
+			"hidden": 1,
 			get_query: () => {
 				var company = frappe.query_report.get_filter_value('company');
 				return {
@@ -88,40 +92,47 @@ frappe.query_reports["KDLB Aging Summary"] = {
 			"fieldname":"payment_terms_template",
 			"label": __("Payment Terms Template"),
 			"fieldtype": "Link",
-			"options": "Payment Terms Template"
+			"options": "Payment Terms Template",
+			"hidden": 1
 		},
 		{
 			"fieldname":"territory",
 			"label": __("Territory"),
 			"fieldtype": "Link",
-			"options": "Territory"
+			"options": "Territory",
+			"hidden": 1
 		},
 		{
 			"fieldname":"sales_partner",
 			"label": __("Sales Partner"),
 			"fieldtype": "Link",
-			"options": "Sales Partner"
+			"options": "Sales Partner",
+			"hidden": 1
 		},
 		{
 			"fieldname":"sales_person",
 			"label": __("Sales Person"),
 			"fieldtype": "Link",
-			"options": "Sales Person"
+			"options": "Sales Person",
+			"hidden": 1
 		},
 		{
 			"fieldname":"based_on_payment_terms",
 			"label": __("Based On Payment Terms"),
 			"fieldtype": "Check",
+			"hidden": 1
 		},
 		{
 			"fieldname":"show_future_payments",
 			"label": __("Show Future Payments"),
 			"fieldtype": "Check",
+			"hidden": 1
 		},
 		{
 			"fieldname":"show_gl_balance",
 			"label": __("Show GL Balance"),
 			"fieldtype": "Check",
+			"hidden": 1
 		},
 	],
 };
