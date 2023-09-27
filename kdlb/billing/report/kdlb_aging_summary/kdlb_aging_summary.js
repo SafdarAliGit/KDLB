@@ -33,6 +33,7 @@ frappe.query_reports["KDLB Aging Summary"] = {
 			"default": "30",
 			"reqd": 1
 		},
+
 		{
 			"fieldname":"range2",
 			"label": __("Ageing Range 2"),

@@ -31,6 +31,7 @@ class AccountsReceivableSummary(ReceivablePayableReport):
 		self.get_data(args)
 		return self.columns, self.data
 
+
 	def get_data(self, args):
 		self.data = []
 		self.receivables = ReceivablePayableReport(self.filters).run(args)[1]
