@@ -88,7 +88,7 @@
 				<td>{%= format_currency(customer_group_summary[key].range2, 'PKR') %}</td>
 				<td>{%= format_currency(customer_group_summary[key].range3, 'PKR') %}</td>
 				<td>{%= format_currency(customer_group_summary[key].range4, 'PKR') %}</td>
-				<td>{%= format_currency(customer_group_summary[key].range5, 'PKR') %}</td>
+<!--				<td>{%= format_currency(customer_group_summary[key].range5, 'PKR') %}</td>-->
 			</tr>
 		{% } %}
 	</tbody>
@@ -105,7 +105,7 @@
 			<th style="width: 18%">{%= filters.range1 %} {%= __(" to ") %} {%= filters.range2 %}</th>
 			<th style="width: 18%">{%= filters.range2 %} {%= __(" to ") %} {%= filters.range3 %}</th>
 			<th style="width: 18%">{%= filters.range3 %} {%= __(" to ") %} {%= filters.range4 %}</th>
-<!--			<th style="width: 18%">{%= filters.range4 %} {%= __(" and above") %}</th>-->
+			<th style="width: 18%">{%= filters.range4 %} {%= __(" and above") %}</th>
 			<th style="width: 25%">{%= __("Surcharge") %}</th>
 			<th style="width: 15%">{%= __("Amount After Surcharge") %}</th>
 <!--			<th style="width: 15%">{%= __("Party Group") %}</th>-->
