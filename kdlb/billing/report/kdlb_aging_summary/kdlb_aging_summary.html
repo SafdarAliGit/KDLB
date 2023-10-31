@@ -62,7 +62,7 @@
 		{% customer_group_summary[customer_group].range2 += data[i].range2 %}
 		{% customer_group_summary[customer_group].range3 += data[i].range3 %}
 		{% customer_group_summary[customer_group].range4 += data[i].range4 %}
-<!--		{% customer_group_summary[customer_group].range5 += data[i].range5 %}-->
+		{% customer_group_summary[customer_group].range5 += data[i].range5 %}
 
 	{% } %}
 {% } %}
@@ -88,7 +88,7 @@
 				<td>{%= format_currency(customer_group_summary[key].range2, 'PKR') %}</td>
 				<td>{%= format_currency(customer_group_summary[key].range3, 'PKR') %}</td>
 				<td>{%= format_currency(customer_group_summary[key].range4, 'PKR') %}</td>
-<!--				<td>{%= format_currency(customer_group_summary[key].range5, 'PKR') %}</td>-->
+				<td>{%= format_currency(customer_group_summary[key].range5, 'PKR') %}</td>
 			</tr>
 		{% } %}
 	</tbody>
@@ -122,7 +122,7 @@
 				<td>{%= format_currency(data[i].range2, data[i].currency) %}</td>
 				<td>{%= format_currency(data[i].range3, data[i].currency) %}</td>
 				<td>{%= format_currency(data[i].range4, data[i].currency) %}</td>
-<!--				<td>{%= format_currency(data[i].range5, data[i].currency) %}</td>-->
+				<td>{%= format_currency(data[i].range5, data[i].currency) %}</td>
 				<td>{%= format_currency(data[i].surcharge, data[i].currency) %}</td>
 				<td>{%= format_currency(data[i].amount_after_surcharge, data[i].currency) %}</td>
 <!--				<td>{%= data[i].customer_group %}</td>-->
