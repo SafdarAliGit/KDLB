@@ -98,11 +98,11 @@ def get_data(filters):
                 SUM(`tabSales Invoice`.grand_total) AS grand_total, 
                 SUM(`tabSales Invoice`.paid_amount) AS paid_amount,
                 SUM(`tabSales Invoice`.outstanding_amount) AS outstanding_amount ,
-                COALESCE(SUM(`tabGL Entry`.credit_amount), 0) AS credit
+                COALESCE(SUM(`tabGL Entry`.credit), 0) AS credit
             FROM 
                 `tabSales Invoice`
             LEFT JOIN 
-                `tabGL Entry` ON `tabSales Invoice`.name = `tabGL Entry`.against_voucher AND `tabGL Entry`.credit_amount > 0
+                `tabGL Entry` ON `tabSales Invoice`.name = `tabGL Entry`.against_voucher AND `tabGL Entry`.credit > 0
             WHERE 
                  {conditions} AND `tabSales Invoice`.item_group='Cargo'
             GROUP BY `tabSales Invoice`.customer,`tabSales Invoice`.customer_name
@@ -116,12 +116,12 @@ def get_data(filters):
     total_import_teus = 0
     total_export_teus = 0
     total_grand_total = 0
-    total_credit_amount = 0
+    total_credit = 0
     total_outstanding_amount = 0
     total_customer_name = len(si_result)
     for row in si_result:
         total_grand_total += row["grand_total"]
-        total_credit_amount += row["credit"]
+        total_credit += row["credit"]
         total_outstanding_amount += row["outstanding_amount"]
         total_import_teus += row["import_teus"]
         total_export_teus += row["export_teus"]
@@ -132,7 +132,7 @@ def get_data(filters):
         "export_teus": total_export_teus,
         "cargo_in_tons": total_import_teus + total_export_teus,
         "grand_total": total_grand_total,
-        "creidt": total_credit_amount,
+        "creidt": total_credit,
         "outstanding_amount": total_outstanding_amount
     })
     data.extend(si_result)
