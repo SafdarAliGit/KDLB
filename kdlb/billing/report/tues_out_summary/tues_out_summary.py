@@ -82,7 +82,7 @@ def get_conditions(filters, doctype):
     if filters.get("customer_group"):
         conditions.append(f"`tab{doctype}`.customer_group = %(customer_group)s")
 
-    # conditions.append(f"`tab{doctype}`.docstatus = 1")  # Include only submitted documents
+    conditions.append(f"`tab{doctype}`.docstatus = 1")  # Include only submitted documents
 
     return " AND ".join(conditions)
 
@@ -103,7 +103,7 @@ def get_data(filters):
             LEFT JOIN 
                 `tabGL Entry` ON `tabSales Invoice`.name = `tabGL Entry`.against_voucher AND `tabGL Entry`.credit > 0
             WHERE 
-                 {conditions} AND `tabSales Invoice`.item_group='Container'
+                 {conditions} AND `tabSales Invoice`.item_group='Container' AND `tabSales Invoice`.customer_name='Riazeda (Pvt) Ltd.'
             GROUP BY `tabSales Invoice`.customer,`tabSales Invoice`.customer_name
             """.format(conditions=get_conditions(filters, "Sales Invoice"))
 
