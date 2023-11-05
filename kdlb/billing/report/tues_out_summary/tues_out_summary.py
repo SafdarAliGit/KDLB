@@ -97,11 +97,10 @@ def get_data(filters):
                 SUM(`tabSales Invoice`.export_teus) AS export_teus,
                 SUM(`tabSales Invoice`.grand_total) AS grand_total, 
                 SUM(`tabSales Invoice`.outstanding_amount) AS outstanding_amount,
-                COALESCE(SUM(`tabGL Entry`.credit), 0) AS credit
+                COALESCE(SUM(`tabGL Entry`.credit), 0) AS credit,
+                (SELECT COALESCE(SUM(`tabGL Entry`.credit), 0) FROM `tabGL Entry` WHERE  `tabGL Entry`.against_voucher=`tabSales Invoice`.name AND `tabGL Entry`.voucher_type='Payment Entry') AS credit                                                                                           
             FROM 
-                `tabSales Invoice`
-            LEFT JOIN 
-                `tabGL Entry` ON `tabSales Invoice`.name = `tabGL Entry`.against_voucher  AND `tabGL Entry`.voucher_type='Payment Entry'
+                `tabSales Invoice`, `tabGL Entry`
             WHERE 
                 {conditions} AND `tabSales Invoice`.item_group='Container' 
             GROUP BY `tabSales Invoice`.customer, `tabSales Invoice`.customer_name;
