@@ -103,7 +103,7 @@ def get_data(filters):
             LEFT JOIN 
                 `tabGL Entry` ON `tabSales Invoice`.name = `tabGL Entry`.against_voucher AND `tabGL Entry`.credit > 0
             WHERE 
-                 {conditions} AND `tabSales Invoice`.item_group='Container' AND `tabSales Invoice`.customer_name='Riazeda (Pvt) Ltd.'
+                 {conditions} AND `tabSales Invoice`.item_group='Container'
             GROUP BY `tabSales Invoice`.customer,`tabSales Invoice`.customer_name
             """.format(conditions=get_conditions(filters, "Sales Invoice"))
 
