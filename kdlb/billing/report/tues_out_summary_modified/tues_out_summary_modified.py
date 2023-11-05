@@ -91,6 +91,7 @@ def get_data(filters):
     data = []
     si_query = """
             SELECT 
+                DISTINCT 
                 `tabSales Invoice`.customer,
                 `tabSales Invoice`.customer_name,
                 SUM(`tabSales Invoice`.import_teus) AS import_teus,
