@@ -101,10 +101,11 @@ def get_data(filters):
             FROM 
                 `tabSales Invoice`
             LEFT JOIN 
-                `tabGL Entry` ON `tabGL Entry`.against_voucher = `tabSales Invoice`.name  AND `tabGL Entry`.voucher_type='Payment Entry'
+                `tabGL Entry` ON `tabGL Entry`.against_voucher = `tabSales Invoice`.name AND `tabGL Entry`.voucher_type='Payment Entry'
             WHERE 
-                 {conditions} AND `tabSales Invoice`.item_group='Container' 
-            GROUP BY `tabSales Invoice`.customer,`tabSales Invoice`.customer_name
+                {conditions} AND `tabSales Invoice`.item_group='Container' 
+            GROUP BY `tabSales Invoice`.customer, `tabSales Invoice`.customer_name;
+
             """.format(conditions=get_conditions(filters, "Sales Invoice"))
 
     si_result = frappe.db.sql(si_query, filters, as_dict=1)
