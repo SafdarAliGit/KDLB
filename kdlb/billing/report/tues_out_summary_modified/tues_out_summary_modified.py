@@ -91,18 +91,29 @@ def get_data(filters):
     data = []
     si_query = """
             SELECT 
-                DISTINCT 
                 `tabSales Invoice`.customer,
                 `tabSales Invoice`.customer_name,
                 SUM(`tabSales Invoice`.import_teus) AS import_teus,
                 SUM(`tabSales Invoice`.export_teus) AS export_teus,
                 SUM(`tabSales Invoice`.grand_total) AS grand_total, 
                 SUM(`tabSales Invoice`.outstanding_amount) AS outstanding_amount,
-                COALESCE(SUM(`tabGL Entry`.credit), 0) AS credit
+                COALESCE(`tabGL Entry Aggregated`.credit, 0) AS credit
             FROM 
                 `tabSales Invoice`
             LEFT JOIN 
-                `tabGL Entry` ON `tabSales Invoice`.name = `tabGL Entry`.against_voucher AND `tabGL Entry`.credit > 0
+                (
+                    SELECT 
+                        `against_voucher`,
+                        SUM(credit) AS credit
+                    FROM 
+                        `tabGL Entry`
+                    WHERE 
+                        credit > 0
+                    GROUP BY 
+                        `against_voucher`
+                ) AS `tabGL Entry Aggregated`
+            ON 
+                `tabSales Invoice`.name = `tabGL Entry Aggregated`.against_voucher
             WHERE 
                 {conditions} AND `tabSales Invoice`.item_group='Container' 
             GROUP BY 
