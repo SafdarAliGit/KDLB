@@ -82,7 +82,7 @@ def get_conditions(filters, doctype):
     if filters.get("customer_group"):
         conditions.append(f"`tab{doctype}`.customer_group = %(customer_group)s")
 
-    conditions.append(f"`tab{doctype}`.docstatus = 1")  # Include only submitted documents
+    # conditions.append(f"`tab{doctype}`.docstatus = 1")  # Include only submitted documents
 
     return " AND ".join(conditions)
 
