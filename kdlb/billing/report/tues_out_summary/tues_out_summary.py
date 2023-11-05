@@ -82,7 +82,7 @@ def get_conditions(filters, doctype):
     if filters.get("customer_group"):
         conditions.append(f"`tab{doctype}`.customer_group = %(customer_group)s")
 
-    conditions.append(f"`tab{doctype}`.docstatus = 1")  # Include only submitted documents
+    # conditions.append(f"`tab{doctype}`.docstatus = 1")  # Include only submitted documents
 
     return " AND ".join(conditions)
 
@@ -96,7 +96,6 @@ def get_data(filters):
                 SUM(`tabSales Invoice`.import_teus) AS import_teus,
                 SUM(`tabSales Invoice`.export_teus) AS export_teus,
                 SUM(`tabSales Invoice`.grand_total) AS grand_total, 
-                SUM(`tabSales Invoice`.paid_amount) AS paid_amount,
                 SUM(`tabSales Invoice`.outstanding_amount) AS outstanding_amount,
                 COALESCE(SUM(`tabGL Entry`.credit), 0) AS credit
             FROM 
