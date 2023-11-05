@@ -91,21 +91,21 @@ def get_data(filters):
     data = []
     si_query = """
             SELECT 
-                t1.customer,
-                t1.customer_name,
-                SUM(t1.import_teus) AS import_teus,
-                SUM(t1.export_teus) AS export_teus,
-                SUM(t1.grand_total) AS grand_total, 
-                SUM(t1.outstanding_amount) AS outstanding_amount,
-                t2.credit
+                `tabSales Invoice`.customer,
+                `tabSales Invoice`.customer_name,
+                SUM(`tabSales Invoice`.import_teus) AS import_teus,
+                SUM(`tabSales Invoice`.export_teus) AS export_teus,
+                SUM(`tabSales Invoice`.grand_total) AS grand_total, 
+                SUM(`tabSales Invoice`.outstanding_amount) AS outstanding_amount,
+                COALESCE(SUM(`tabGL Entry`.credit), 0) AS credit
             FROM 
-                `tabSales Invoice` t1,
-								( select against_voucher,COALESCE(SUM(credit), 0) AS credit from `tabGL Entry` where voucher_type='Payment Entry' group by against_voucher ) t2
-						WHERE 
-                 t1.name = t2.against_voucher AND 
-                 t1.item_group='Container' 
+                `tabSales Invoice`
+            LEFT JOIN 
+                `tabGL Entry` ON `tabSales Invoice`.name = `tabGL Entry`.against_voucher AND `tabGL Entry`.voucher_type='Payment Entry'
+            WHERE 
+                {conditions} AND `tabSales Invoice`.item_group='Container' 
             GROUP BY 
-                t1.customer, t1.customer_name,t2.credit ;
+                `tabSales Invoice`.customer, `tabSales Invoice`.customer_name;
 
             """.format(conditions=get_conditions(filters, "Sales Invoice"))
 
