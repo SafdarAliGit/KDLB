@@ -97,7 +97,7 @@ def get_data(filters):
                 SUM(`tabSales Invoice`.export_teus) AS export_teus,
                 SUM(`tabSales Invoice`.grand_total) AS grand_total, 
                 SUM(`tabSales Invoice`.outstanding_amount) AS outstanding_amount,
-                (SELECT COALESCE(SUM(`tabGL Entry`.credit), 0) FROM `tabGL Entry` WHERE  `tabGL Entry`.against_voucher=`tabSales Invoice`.name AND `tabGL Entry`.voucher_type='Payment Entry') AS credit                                                                                           
+                COALESCE((SELECT SUM(`tabGL Entry`.credit) FROM `tabGL Entry` WHERE `tabGL Entry`.against_voucher = `tabSales Invoice`.name AND `tabGL Entry`.voucher_type='Payment Entry'), 0) AS credit                                                                                           
             FROM 
                 `tabSales Invoice`, `tabGL Entry`
             WHERE 
