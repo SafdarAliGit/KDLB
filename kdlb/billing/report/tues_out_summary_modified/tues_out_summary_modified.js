@@ -2,8 +2,8 @@
 // For license information, please see license.txt
 /* eslint-disable */
 
-frappe.query_reports["TUES Out Summary New"] = {
-	"filters": [
+frappe.query_reports["TUES Out Summary Modified"] = {
+		"filters": [
         {
             "fieldname": "from_date",
             "label": __("From Date"),
