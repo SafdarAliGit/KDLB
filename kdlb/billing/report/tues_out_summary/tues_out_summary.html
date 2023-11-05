@@ -81,7 +81,7 @@ table {
         <td style="text-align: center;">{%= data[i].export_teus %}</td>
         <td style="text-align: center;">{%= data[i].cargo_in_tons %}</td>
         <td style="text-align:right;">{%= format_currency(data[i].grand_total, data[i].currency) %}</td>
-        <td style="text-align:right;">{%= format_currency(data[i].paid_amount, data[i].currency) %}</td>
+        <td style="text-align:right;">{%= format_currency(data[i].credit, data[i].currency) %}</td>
         <td style="text-align:right;">{%= format_currency(data[i].outstanding_amount, data[i].currency) %}</td>
     </tr>
     {% } %}
