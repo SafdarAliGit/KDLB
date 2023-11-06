@@ -92,7 +92,6 @@ def get_data(filters):
     si_query = """
             SELECT
                 `tabSales Invoice`.customer,
-                `tabSales Invoice`.name,
                 `tabSales Invoice`.customer_name,
                 SUM(`tabSales Invoice`.import_teus) AS import_teus,
                 SUM(`tabSales Invoice`.export_teus) AS export_teus,
@@ -110,8 +109,6 @@ def get_data(filters):
                         `tabGL Entry`
                     WHERE
                         `voucher_type` = 'Payment Entry' AND credit > 0
-                    GROUP BY
-                        `against_voucher`
                 ) AS `tabGL Entry Aggregated`
                 ON
                  `tabGL Entry Aggregated`.against_voucher=`tabSales Invoice`.name
