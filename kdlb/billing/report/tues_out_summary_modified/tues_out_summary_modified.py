@@ -90,32 +90,34 @@ def get_conditions(filters, doctype):
 def get_data(filters):
     data = []
     si_query = """
-            SELECT 
+            SELECT
                 `tabSales Invoice`.customer,
                 `tabSales Invoice`.customer_name,
                 SUM(`tabSales Invoice`.import_teus) AS import_teus,
                 SUM(`tabSales Invoice`.export_teus) AS export_teus,
-                SUM(`tabSales Invoice`.grand_total) AS grand_total, 
+                SUM(`tabSales Invoice`.grand_total) AS grand_total,
                 SUM(`tabSales Invoice`.outstanding_amount) AS outstanding_amount,
                 COALESCE(`tabGL Entry Aggregated`.credit, 0) AS credit
-            FROM 
+                FROM
                 `tabSales Invoice`
-            LEFT JOIN 
+                LEFT JOIN
                 (
-                    SELECT 
+                    SELECT
                         `against_voucher`,
                         SUM(credit) AS credit
-                    FROM 
-                        `tabGL Entry`                        
-                    GROUP BY 
+                    FROM
+                        `tabGL Entry`
+                    WHERE
+                        `voucher_type` = 'Payment Entry'
+                    GROUP BY
                         `against_voucher`
                 ) AS `tabGL Entry Aggregated`
-            ON 
-                `tabSales Invoice`.name = `tabGL Entry Aggregated`.against_voucher AND `tabGL Entry Aggregated`.credit > 0
-            WHERE 
-                {conditions} AND `tabSales Invoice`.item_group='Container' 
-            GROUP BY 
-                `tabSales Invoice`.customer, `tabSales Invoice`.customer_name;
+                ON
+                `tabSales Invoice`.name = `tabGL Entry Aggregated`.against_voucher
+                WHERE {conditions} AND 
+                `tabSales Invoice`.item_group = 'Container'
+                GROUP BY
+                `tabSales Invoice`.customer, `tabSales Invoice`.customer_name;  
 
             """.format(conditions=get_conditions(filters, "Sales Invoice"))
 
