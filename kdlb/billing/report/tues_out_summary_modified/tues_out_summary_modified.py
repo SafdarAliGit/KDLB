@@ -108,7 +108,7 @@ def get_data(filters):
                     FROM 
                         `tabGL Entry`
                     WHERE 
-                        credit > 0 AND voucher_type = 'Payment Entry'
+                        credit > 0
                     GROUP BY 
                         `against_voucher`
                 ) AS `tabGL Entry Aggregated`
