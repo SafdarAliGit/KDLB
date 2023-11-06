@@ -109,6 +109,8 @@ def get_data(filters):
                         `tabGL Entry`
                     WHERE
                         `voucher_type` = 'Payment Entry' AND credit > 0
+                    GROUP BY
+                        `against_voucher`
                 ) AS `tabGL Entry Aggregated`
                 ON
                  `tabGL Entry Aggregated`.against_voucher=`tabSales Invoice`.name
