@@ -106,12 +106,12 @@ def get_data(filters):
                         `against_voucher`,
                         SUM(credit) AS credit
                     FROM 
-                        `tabGL Entry`
-                    WHERE 
-                        `voucher_type` = 'Payment Entry'
+                        `tabGL Entry`                        
+                    GROUP BY 
+                        `against_voucher`
                 ) AS `tabGL Entry Aggregated`
             ON 
-                `tabSales Invoice`.name = `tabGL Entry Aggregated`.against_voucher
+                `tabSales Invoice`.name = `tabGL Entry Aggregated`.against_voucher AND `tabGL Entry Aggregated`.credit > 0
             WHERE 
                 {conditions} AND `tabSales Invoice`.item_group='Container' 
             GROUP BY 
