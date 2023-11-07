@@ -105,7 +105,7 @@ def get_data(filters):
             WHERE 
                 {conditions} AND `tabSales Invoice`.item_group='Container' 
             GROUP BY 
-                tabSales Invoice`.customer,`tabSales Invoice`.customer_name;
+                `tabSales Invoice`.customer,`tabSales Invoice`.customer_name;
 
             """.format(conditions=get_conditions(filters, "Sales Invoice"))
 
