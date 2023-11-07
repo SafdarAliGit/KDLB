@@ -100,7 +100,7 @@ def get_data(filters):
                 COALESCE(SUM(`tabGL Entry`.credit), 0) AS credit
             FROM 
                 `tabGL Entry`
-            RIGHT JOIN 
+            LEFT JOIN 
                 `tabSales Invoice` ON `tabGL Entry`.against_voucher = `tabSales Invoice`.name AND `tabGL Entry`.credit > 0
             WHERE 
                 {conditions} AND `tabSales Invoice`.item_group='Container' 
