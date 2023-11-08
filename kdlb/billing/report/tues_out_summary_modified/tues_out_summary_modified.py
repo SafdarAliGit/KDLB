@@ -90,22 +90,22 @@ def get_conditions(filters, doctype):
 def get_data(filters):
     data = []
     si_query = """
-            SELECT 		
-	    	    `tabSales Invoice`.customer,
+            SELECT 
+                `tabSales Invoice`.customer,
                 `tabSales Invoice`.customer_name,
-                COALESCE(SUM(`tabSales Invoice`.import_teus),0) AS import_teus,
-                COALESCE(SUM(`tabSales Invoice`.export_teus),0) AS export_teus,
-                COALESCE(SUM(`tabSales Invoice`.grand_total),0) AS grand_total, 
-                COALESCE(SUM(`tabSales Invoice`.outstanding_amount),0) AS outstanding_amount,
+                SUM(`tabSales Invoice`.import_teus) AS import_teus,
+                SUM(`tabSales Invoice`.export_teus) AS export_teus,
+                SUM(`tabSales Invoice`.grand_total) AS grand_total, 
+                SUM(`tabSales Invoice`.outstanding_amount) AS outstanding_amount,
                 COALESCE(SUM(`tabGL Entry`.credit), 0) AS credit
             FROM 
-                `tabGL Entry`
+                `tabSales Invoice`
             LEFT JOIN 
-                `tabSales Invoice` ON `tabGL Entry`.against_voucher = `tabSales Invoice`.name AND `tabGL Entry`.credit > 0
+                `tabGL Entry` ON `tabSales Invoice`.name = `tabGL Entry`.against_voucher AND `tabGL Entry`.credit > 0 AND `tabGL Entry`.is_cancelled = 0
             WHERE 
                 {conditions} AND `tabSales Invoice`.item_group='Container' 
             GROUP BY 
-                `tabSales Invoice`.customer,`tabSales Invoice`.customer_name;
+                `tabSales Invoice`.customer, `tabSales Invoice`.customer_name;
 
             """.format(conditions=get_conditions(filters, "Sales Invoice"))
 
