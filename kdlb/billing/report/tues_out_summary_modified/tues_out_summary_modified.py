@@ -93,49 +93,47 @@ def get_data(filters):
             SELECT 
                 `tabSales Invoice`.customer,
                 `tabSales Invoice`.customer_name,
-                SUM(`tabSales Invoice`.import_teus) AS import_teus,
-                SUM(`tabSales Invoice`.export_teus) AS export_teus,
-                SUM(`tabSales Invoice`.grand_total) AS grand_total, 
-                SUM(`tabSales Invoice`.outstanding_amount) AS outstanding_amount,
-                COALESCE(SUM(`tabGL Entry`.credit), 0) AS credit
+                `tabSales Invoice`.import_teus AS import_teus,
+                `tabSales Invoice`.export_teus AS export_teus,
+                `tabSales Invoice`.grand_total AS grand_total, 
+                `tabSales Invoice`.outstanding_amount AS outstanding_amount,
+               `tabGL Entry`.credit AS credit
             FROM 
                 `tabSales Invoice`
             LEFT JOIN 
                 `tabGL Entry` ON `tabSales Invoice`.name = `tabGL Entry`.against_voucher AND `tabGL Entry`.credit > 0 AND `tabGL Entry`.is_cancelled = 0
             WHERE 
-                {conditions} AND `tabSales Invoice`.item_group='Container' 
-            GROUP BY 
-                `tabSales Invoice`.customer, `tabSales Invoice`.customer_name;
+                {conditions} AND `tabSales Invoice`.item_group='Container'
 
             """.format(conditions=get_conditions(filters, "Sales Invoice"))
 
     si_result = frappe.db.sql(si_query, filters, as_dict=1)
-    for row in si_result:
-        row.update({
-            'cargo_in_tons': row.import_teus + row.import_teus,
-        })
-    total_import_teus = 0
-    total_export_teus = 0
-    total_grand_total = 0
-    total_credit = 0
-    total_outstanding_amount = 0
-    total_customer_name = len(si_result)
-    for row in si_result:
-        total_grand_total += row["grand_total"]
-        total_credit += row["credit"]
-        total_outstanding_amount += row["outstanding_amount"]
-        total_import_teus += row["import_teus"]
-        total_export_teus += row["export_teus"]
-    si_result.append({
-        "customer": _("Total"),
-        "customer_name": f"Total parties :  {total_customer_name}",
-        "import_teus": total_import_teus,
-        "export_teus": total_export_teus,
-        "cargo_in_tons": total_import_teus + total_export_teus,
-        "grand_total": total_grand_total,
-        "credit": total_credit,
-        "outstanding_amount": total_outstanding_amount
-    })
+    # for row in si_result:
+    #     row.update({
+    #         'cargo_in_tons': row.import_teus + row.import_teus,
+    #     })
+    # total_import_teus = 0
+    # total_export_teus = 0
+    # total_grand_total = 0
+    # total_credit = 0
+    # total_outstanding_amount = 0
+    # total_customer_name = len(si_result)
+    # for row in si_result:
+    #     total_grand_total += row["grand_total"]
+    #     total_credit += row["credit"]
+    #     total_outstanding_amount += row["outstanding_amount"]
+    #     total_import_teus += row["import_teus"]
+    #     total_export_teus += row["export_teus"]
+    # si_result.append({
+    #     "customer": _("Total"),
+    #     "customer_name": f"Total parties :  {total_customer_name}",
+    #     "import_teus": total_import_teus,
+    #     "export_teus": total_export_teus,
+    #     "cargo_in_tons": total_import_teus + total_export_teus,
+    #     "grand_total": total_grand_total,
+    #     "credit": total_credit,
+    #     "outstanding_amount": total_outstanding_amount
+    # })
     data.extend(si_result)
     return data
 
