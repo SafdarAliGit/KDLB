@@ -123,6 +123,7 @@ def get_data(filters):
     for row in si_result:
         total_grand_total += row["grand_total"]
         total_credit += row["credit"]
+        print(f"{row['credit']}")
         total_outstanding_amount += row["outstanding_amount"]
         total_import_teus += row["import_teus"]
         total_export_teus += row["export_teus"]
