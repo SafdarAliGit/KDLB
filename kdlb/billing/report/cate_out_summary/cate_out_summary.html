@@ -8,20 +8,20 @@
         vertical-align: middle !important;
     }
 
-table {
-    border-collapse: collapse;
-    width: 100%;
-    border: 1.5px solid #000000;
-    page-break-inside: auto;
-  }
+/*table {*/
+/*    border-collapse: collapse;*/
+/*    width: 100%;*/
+/*    border: 1.5px solid #000000;*/
+/*   page-break-after: auto;*/
+/*  }*/
 
   th, td {
-    text-align: left;
-    border: 1.5px solid #000000; /* Set border width to 1.5px */
+    /*text-align: left;*/
+    border: 1.5px solid #000000 !important; /* Set border width to 1.5px */
   }
 
   th {
-    background-color: transparent;
+    background-color: transparent !important;
     color: #000000 !important;
       font-weight: bold !important;
   }
@@ -29,11 +29,11 @@ table {
   font-weight: bold !important;
 }
 
-   @media print {
-    table {
-      page-break-inside: avoid; /* Avoid splitting the table across pages */
-    }
-  }
+  /* @media print {*/
+  /*  table {*/
+  /*    page-break-inside: avoid; !* Avoid splitting the table across pages *!*/
+  /*  }*/
+  /*}*/
 </style>
 
 
@@ -59,7 +59,7 @@ table {
 
 </div>
 
-<table >
+<table class="table table-bordered table-condensed">
     <thead>
     <tr>
         <th style="width: 10%">{%= __("Sr#") %}</th>
