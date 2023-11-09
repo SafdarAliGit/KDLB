@@ -30,4 +30,6 @@ frappe.query_reports["TUES Out Summary Modified"] = {
         },
 
     ],
-};
+}
+
+erpnext.utils.add_dimensions('TUES Out Summary Modified', 15)
