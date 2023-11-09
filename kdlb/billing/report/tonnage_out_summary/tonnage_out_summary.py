@@ -132,7 +132,7 @@ def get_data(filters):
         "export_teus": total_export_teus,
         "cargo_in_tons": total_import_teus + total_export_teus,
         "grand_total": total_grand_total,
-        "creidt": total_credit,
+        "credit": total_credit,
         "outstanding_amount": total_outstanding_amount
     })
     data.extend(si_result)
