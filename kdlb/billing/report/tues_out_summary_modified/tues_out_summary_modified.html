@@ -8,32 +8,32 @@
         vertical-align: middle !important;
     }
 
-table {
-    border-collapse: collapse;
-    width: 100%;
-    border: 1.5px solid #000000;
-   page-break-after: auto;
-  }
+/*table {*/
+/*    border-collapse: collapse;*/
+/*    width: 100%;*/
+/*    border: 1.5px solid #000000;*/
+/*   page-break-after: auto;*/
+/*  }*/
 
-  th, td {
-    text-align: left;
-    border: 1.5px solid #000000; /* Set border width to 1.5px */
-  }
+/*  th, td {*/
+/*    text-align: left;*/
+/*    border: 1.5px solid #000000; !* Set border width to 1.5px *!*/
+/*  }*/
 
-  th {
-    background-color: transparent;
-    color: #000000 !important;
-      font-weight: bold !important;
-  }
-  tr:last-child {
-  font-weight: bold !important;
-}
+/*  th {*/
+/*    background-color: transparent;*/
+/*    color: #000000 !important;*/
+/*      font-weight: bold !important;*/
+/*  }*/
+/*  tr:last-child {*/
+/*  font-weight: bold !important;*/
+/*}*/
 
-   @media print {
-    table {
-      page-break-inside: avoid; /* Avoid splitting the table across pages */
-    }
-  }
+/*   @media print {*/
+/*    table {*/
+/*      page-break-inside: avoid; !* Avoid splitting the table across pages *!*/
+/*    }*/
+/*  }*/
 </style>
 
 
@@ -59,7 +59,7 @@ table {
 
 </div>
 
-<table >
+<table class="table table-bordered table-condensed">
     <thead>
     <tr>
         <th style="width: 5%">{%= __("Code") %}</th>
